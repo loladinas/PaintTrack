@@ -1,0 +1,1766 @@
+[
+  {
+    "id": "72.001",
+    "name": "Dead White",
+    "color": "#FFFFFF",
+    "type": "Regular",
+    "citadel": "White Scar",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.101",
+    "name": "Off-White",
+    "color": "#FAEFD3",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.098",
+    "name": "Elfic Flesh",
+    "color": "#E4D0B1",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.034",
+    "name": "Bone White",
+    "color": "#B79F76",
+    "type": "Regular",
+    "citadel": "Screaming Skull",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.003",
+    "name": "Pale Flesh",
+    "color": "#C29D7E",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.100",
+    "name": "Rosy Flesh",
+    "color": "#E5896B",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.107",
+    "name": "Athena Skin",
+    "color": "#C7635A",
+    "type": "Regular",
+    "citadel": "Bugmans Glow",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.108",
+    "name": "Succubus Skin",
+    "color": "#8E454F",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.099",
+    "name": "Skin Tone",
+    "color": "#E0A581",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.004",
+    "name": "Elf Skin Tone",
+    "color": "#C5885B",
+    "type": "Regular",
+    "citadel": "Kislev Flesh",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.071",
+    "name": "Barbarian Skin",
+    "color": "#8D6949",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.109",
+    "name": "Toxic Yellow",
+    "color": "#E2D262",
+    "type": "Regular",
+    "citadel": "Dorn Yellow",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.005",
+    "name": "Moon Yellow",
+    "color": "#EEB61E",
+    "type": "Regular",
+    "citadel": "Flash Gitz Yellow",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.006",
+    "name": "Sun Yellow",
+    "color": "#FAA224",
+    "type": "Regular",
+    "citadel": "Yriel Yellow",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.007",
+    "name": "Gold Yellow",
+    "color": "#D6792D",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.038",
+    "name": "Scrofulous Brown",
+    "color": "#9F6829",
+    "type": "Regular",
+    "citadel": "Bestigor Flesh",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.110",
+    "name": "Sunset Orange",
+    "color": "#F79644",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.008",
+    "name": "Orange Fire",
+    "color": "#F1662C",
+    "type": "Regular",
+    "citadel": "Fire Dragon Bright",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.009",
+    "name": "Hot Orange",
+    "color": "#E9472E",
+    "type": "Regular",
+    "citadel": "Troll Slayer Orange",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.106",
+    "name": "Scarlet Blood",
+    "color": "#C52B31",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.010",
+    "name": "Bloody Red",
+    "color": "#D9282B",
+    "type": "Regular",
+    "citadel": "Evil Sunz Scarlet",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.012",
+    "name": "Scarlet Red",
+    "color": "#721C23",
+    "type": "Regular",
+    "citadel": "Khorne Red",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.011",
+    "name": "Gory Red",
+    "color": "#7A1E26",
+    "type": "Regular",
+    "citadel": "Wazdakka Red",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.111",
+    "name": "Nocturnal Red",
+    "color": "#4F1525",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.112",
+    "name": "Evil Red",
+    "color": "#3E1625",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.013",
+    "name": "Squid Pink",
+    "color": "#C277A3",
+    "type": "Regular",
+    "citadel": "Fulgrim Pink",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.014",
+    "name": "Warlord Purple",
+    "color": "#842859",
+    "type": "Regular",
+    "citadel": "Screamer Pink",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.113",
+    "name": "Deep Magenta",
+    "color": "#622748",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.114",
+    "name": "Lustful Purple",
+    "color": "#AD85BA",
+    "type": "Regular",
+    "citadel": "Dechala Lilac",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.076",
+    "name": "Alien Purple",
+    "color": "#6A65AE",
+    "type": "Regular",
+    "citadel": "Daemonette Hide",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.015",
+    "name": "Hexed Lichen",
+    "color": "#4C2A5B",
+    "type": "Regular",
+    "citadel": "Xereus Purple",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.016",
+    "name": "Royal Purple",
+    "color": "#261D38",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.116",
+    "name": "Midnight Purple",
+    "color": "#271635",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.117",
+    "name": "Elfic Blue",
+    "color": "#4F677F",
+    "type": "Regular",
+    "citadel": "Calgar Blue",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.022",
+    "name": "Ultramarine Blue",
+    "color": "#34416F",
+    "type": "Regular",
+    "citadel": "Macragge Blue",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.019",
+    "name": "Night Blue",
+    "color": "#131F30",
+    "type": "Regular",
+    "citadel": "Night Lords Blue",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.118",
+    "name": "Sunrise Blue",
+    "color": "#5CC9EA",
+    "type": "Regular",
+    "citadel": "Kantor Blue",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.023",
+    "name": "Electric Blue",
+    "color": "#419AB1",
+    "type": "Regular",
+    "citadel": "Lothern Blue",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.021",
+    "name": "Magic Blue",
+    "color": "#0071AA",
+    "type": "Regular",
+    "citadel": "Caledor Sky",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.020",
+    "name": "Imperial Blue",
+    "color": "#202C4A",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.096",
+    "name": "Verdigris",
+    "color": "#78C9AA",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": true
+  },
+  {
+    "id": "72.119",
+    "name": "Aquamarine",
+    "color": "#12817B",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.024",
+    "name": "Turquoise",
+    "color": "#0B6667",
+    "type": "Regular",
+    "citadel": "Sotek Green",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.120",
+    "name": "Abyssal Turquoise",
+    "color": "#184359",
+    "type": "Regular",
+    "citadel": "Stegadon Scale Green",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.121",
+    "name": "Ghost Green",
+    "color": "#77C396",
+    "type": "Regular",
+    "citadel": "Gauss Blaster Green",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.025",
+    "name": "Foul Green",
+    "color": "#0CAB87",
+    "type": "Regular",
+    "citadel": "Sybarite Green",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.026",
+    "name": "Jade Green",
+    "color": "#06795D",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.027",
+    "name": "Scurvy Green",
+    "color": "#164F45",
+    "type": "Regular",
+    "citadel": "Kabalite Green",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.122",
+    "name": "Bile Green",
+    "color": "#CDDC33",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.032",
+    "name": "Scorpy Green",
+    "color": "#528743",
+    "type": "Regular",
+    "citadel": "Moot Green",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.030",
+    "name": "Goblin Green",
+    "color": "#528743",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.029",
+    "name": "Sick Green",
+    "color": "#3F633E",
+    "type": "Regular",
+    "citadel": "Warboss Green",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.123",
+    "name": "Angel Green",
+    "color": "#324F31",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.028",
+    "name": "Dark Green",
+    "color": "#153323",
+    "type": "Regular",
+    "citadel": "Caliban Green",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.035",
+    "name": "Dead Flesh",
+    "color": "#BAA658",
+    "type": "Regular",
+    "citadel": "Ogryn Camo",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.031",
+    "name": "Camouflage Green",
+    "color": "#897A3F",
+    "type": "Regular",
+    "citadel": "Elysian Green",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.145",
+    "name": "Dirty Grey",
+    "color": "#656138",
+    "type": "Regular",
+    "citadel": "Deathworld Forest",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.067",
+    "name": "Cayman Green",
+    "color": "#55522E",
+    "type": "Regular",
+    "citadel": "Castellan Green",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.061",
+    "name": "Khaki",
+    "color": "#957D54",
+    "type": "Regular",
+    "citadel": "Zandri Dust",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.063",
+    "name": "Desert Yellow",
+    "color": "#966B3D",
+    "type": "Regular",
+    "citadel": "Tallarn Sand",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.062",
+    "name": "Earth",
+    "color": "#715734",
+    "type": "Regular",
+    "citadel": "Steel Legion Drab",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.036",
+    "name": "Bronze Brown",
+    "color": "#AF6D32",
+    "type": "Regular",
+    "citadel": "Tau Light Ochre",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.039",
+    "name": "Plague Brown",
+    "color": "#A8753D",
+    "type": "Regular",
+    "citadel": "Balor Brown",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.040",
+    "name": "Leather Brown",
+    "color": "#8A6034",
+    "type": "Regular",
+    "citadel": "XV88",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.043",
+    "name": "Beasty Brown",
+    "color": "#75522A",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.042",
+    "name": "Parasite Brown",
+    "color": "#9C5E29",
+    "type": "Regular",
+    "citadel": "Skrag Brown",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.115",
+    "name": "Grunge Brown",
+    "color": "#84472E",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.124",
+    "name": "Gorgon Brown",
+    "color": "#552E26",
+    "type": "Regular",
+    "citadel": "Mourfang Brown",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.066",
+    "name": "Tan",
+    "color": "#926657",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.044",
+    "name": "Dark Fleshtone",
+    "color": "#59352A",
+    "type": "Regular",
+    "citadel": "Doombull Brown",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.045",
+    "name": "Charred Brown",
+    "color": "#3C2726",
+    "type": "Regular",
+    "citadel": "Rinox Hide",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.047",
+    "name": "Wolf Grey",
+    "color": "#B7CAC9",
+    "type": "Regular",
+    "citadel": "Blue Horror",
+    "owned": false,
+    "toBuy": true
+  },
+  {
+    "id": "72.095",
+    "name": "Glacier Blue",
+    "color": "#BED1EC",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.102",
+    "name": "Steel Grey",
+    "color": "#7591A0",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": true
+  },
+  {
+    "id": "72.048",
+    "name": "Sombre Grey",
+    "color": "#54646F",
+    "type": "Regular",
+    "citadel": "The Fang",
+    "owned": false,
+    "toBuy": true
+  },
+  {
+    "id": "72.148",
+    "name": "Warm Grey",
+    "color": "#AA9999",
+    "type": "Regular",
+    "citadel": "Rackarth Flesh",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.049",
+    "name": "Stonewall Grey",
+    "color": "#969083",
+    "type": "Regular",
+    "citadel": "Dawnstone",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.050",
+    "name": "Neutral Grey",
+    "color": "#6C6E65",
+    "type": "Regular",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.155",
+    "name": "Charcoal",
+    "color": "#303438",
+    "type": "Regular",
+    "citadel": "Corvus Black",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.051",
+    "name": "Black",
+    "color": "#000000",
+    "type": "Regular",
+    "citadel": "Abbadon Black",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.052",
+    "name": "Silver",
+    "color": "#A9B2B3",
+    "type": "Metallic",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.053",
+    "name": "Chainmail",
+    "color": "#8A939A",
+    "type": "Metallic",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.054",
+    "name": "Dark Gunmetal",
+    "color": "#696E72",
+    "type": "Metallic",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.055",
+    "name": "Polished Gold",
+    "color": "#E3B331",
+    "type": "Metallic",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.056",
+    "name": "Glorious Gold",
+    "color": "#D08B34",
+    "type": "Metallic",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.057",
+    "name": "Bright Bronze",
+    "color": "#9E5918",
+    "type": "Metallic",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.058",
+    "name": "Brassy Brass",
+    "color": "#AA6B46",
+    "type": "Metallic",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.059",
+    "name": "Hammered Copper",
+    "color": "#724532",
+    "type": "Metallic",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.060",
+    "name": "Tinny Tin",
+    "color": "#522B27",
+    "type": "Metallic",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.082",
+    "name": "White",
+    "color": "#FFFFFF",
+    "type": "Ink",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.093",
+    "name": "Skin",
+    "color": "#5A2B2A",
+    "type": "Ink",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.085",
+    "name": "Yellow",
+    "color": "#ECA72A",
+    "type": "Ink",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.086",
+    "name": "Red",
+    "color": "#D32026",
+    "type": "Ink",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.083",
+    "name": "Magenta",
+    "color": "#A52C60",
+    "type": "Ink",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.087",
+    "name": "Violet",
+    "color": "#6D467B",
+    "type": "Ink",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.088",
+    "name": "Blue",
+    "color": "#0C5C94",
+    "type": "Ink",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.084",
+    "name": "Dark Turquoise",
+    "color": "#007489",
+    "type": "Ink",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.089",
+    "name": "Green",
+    "color": "#0F743C",
+    "type": "Ink",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.090",
+    "name": "Black Green",
+    "color": "#3A644E",
+    "type": "Ink",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.091",
+    "name": "Sepia",
+    "color": "#53402D",
+    "type": "Ink",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.094",
+    "name": "Black",
+    "color": "#000000",
+    "type": "Ink",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "73.208",
+    "name": "Yellow",
+    "color": "#D5DF31",
+    "type": "Wash",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "73.204",
+    "name": "Flesh",
+    "color": "#B07D79",
+    "type": "Wash",
+    "citadel": "Reikland Fleshshade",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "73.206",
+    "name": "Red",
+    "color": "#D66A8E",
+    "type": "Wash",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "73.209",
+    "name": "Violet",
+    "color": "#5C4192",
+    "type": "Wash",
+    "citadel": "Druchii Violet",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "73.207",
+    "name": "Blue",
+    "color": "#1376BB",
+    "type": "Wash",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "73.203",
+    "name": "Umber",
+    "color": "#70635A",
+    "type": "Wash",
+    "citadel": "Agrax Earthshade",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "73.200",
+    "name": "Sepia",
+    "color": "#876436",
+    "type": "Wash",
+    "citadel": "Seraphim Sepia",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "73.201",
+    "name": "Black",
+    "color": "#33343A",
+    "type": "Wash",
+    "citadel": "Nuln Oil",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.103",
+    "name": "Fluorescent Yellow",
+    "color": "#EAE84B",
+    "type": "Fluo",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.156",
+    "name": "Fluorescent Orange",
+    "color": "#F05923",
+    "type": "Fluo",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.157",
+    "name": "Fluorescent Red",
+    "color": "#E0385B",
+    "type": "Fluo",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.158",
+    "name": "Fluoresc. Magenta",
+    "color": "#ED3E98",
+    "type": "Fluo",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.159",
+    "name": "Fluorescent Violet",
+    "color": "#6F2C84",
+    "type": "Fluo",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.160",
+    "name": "Fluorescent Blue",
+    "color": "#008CD2",
+    "type": "Fluo",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.104",
+    "name": "Fluorescent Green",
+    "color": "#6EBE44",
+    "type": "Fluo",
+    "citadel": "N/A",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.161",
+    "name": "Fluo. Cold Green",
+    "color": "#027679",
+    "type": "Fluo",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.600",
+    "name": "Vomit",
+    "color": "#F4AC2F",
+    "type": "Special FX",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.601",
+    "name": "Fresh Blood",
+    "color": "#F37669",
+    "type": "Special FX",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.602",
+    "name": "Thick Blood",
+    "color": "#975045",
+    "type": "Special FX",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.603",
+    "name": "Demon Blood",
+    "color": "#705287",
+    "type": "Special FX",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.604",
+    "name": "Frost",
+    "color": "#78BFE8",
+    "type": "Special FX",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.605",
+    "name": "Green Rust",
+    "color": "#94C9B7",
+    "type": "Special FX",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.606",
+    "name": "Bile",
+    "color": "#A6CC00",
+    "type": "Special FX",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.607",
+    "name": "Acid",
+    "color": "#70A972",
+    "type": "Special FX",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.608",
+    "name": "Corrosion",
+    "color": "#62352E",
+    "type": "Special FX",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.609",
+    "name": "Rust",
+    "color": "#6E5B55",
+    "type": "Special FX",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.610",
+    "name": "Galvanic Corrosion",
+    "color": "#DE8B4D",
+    "type": "Special FX",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.611",
+    "name": "Moss and Lichen",
+    "color": "#DDDB6A",
+    "type": "Special FX",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "70.521",
+    "name": "Metal Medium",
+    "color": "#F5F5F5",
+    "type": "Auxiliary",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "70.596",
+    "name": "Glaze Medium",
+    "color": "#F5F5F5",
+    "type": "Auxiliary",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "71.261",
+    "name": "Airbrush Thinner",
+    "color": "#F5F5F5",
+    "type": "Auxiliary",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.650",
+    "name": "Gloss Poly. Varnish",
+    "color": "#F5F5F5",
+    "type": "Auxiliary",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.651",
+    "name": "Matt Poly. Varnish",
+    "color": "#F5F5F5",
+    "type": "Auxiliary",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.652",
+    "name": "Satin Poly. Varnish",
+    "color": "#F5F5F5",
+    "type": "Auxiliary",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.653",
+    "name": "Ultra Matt Pol. Varn.",
+    "color": "#F5F5F5",
+    "type": "Auxiliary",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.401",
+    "name": "Templar White",
+    "color": "#E5E5D5",
+    "type": "Xpress",
+    "citadel": "Apothecary White",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.402",
+    "name": "Dwarf Skin",
+    "color": "#D4A585",
+    "type": "Xpress",
+    "citadel": "Guilliman Flesh",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.403",
+    "name": "Imperial Yellow",
+    "color": "#FFD500",
+    "type": "Xpress",
+    "citadel": "Imperial Fist",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.404",
+    "name": "Nuclear Yellow",
+    "color": "#FFE500",
+    "type": "Xpress",
+    "citadel": "Iyanden Yellow",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.405",
+    "name": "Martian Orange",
+    "color": "#FF6500",
+    "type": "Xpress",
+    "citadel": "Gryph-Hound Orange",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.406",
+    "name": "Plasma Red",
+    "color": "#CC0000",
+    "type": "Xpress",
+    "citadel": "Blood Angels Red",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.407",
+    "name": "Velvet Red",
+    "color": "#950000",
+    "type": "Xpress",
+    "citadel": "Flesh Tearers Red",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.408",
+    "name": "Cardinal Purple",
+    "color": "#C54575",
+    "type": "Xpress",
+    "citadel": "Doomfire Magenta",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.409",
+    "name": "Deep Purple",
+    "color": "#854585",
+    "type": "Xpress",
+    "citadel": "Sigvald Burgundy",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.410",
+    "name": "Gloomy Violet",
+    "color": "#653575",
+    "type": "Xpress",
+    "citadel": "Luxion Purple",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.411",
+    "name": "Mystic Blue",
+    "color": "#4595D5",
+    "type": "Xpress",
+    "citadel": "Talassar Blue",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.412",
+    "name": "Storm Blue",
+    "color": "#2555A5",
+    "type": "Xpress",
+    "citadel": "Ultramarines Blue",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.413",
+    "name": "Omega Blue",
+    "color": "#1545A5",
+    "type": "Xpress",
+    "citadel": "Celestium Blue",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.414",
+    "name": "Caribbean Turquo.",
+    "color": "#25B5C5",
+    "type": "Xpress",
+    "citadel": "Akhelian Green",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.415",
+    "name": "Orc Skin",
+    "color": "#559545",
+    "type": "Xpress",
+    "citadel": "Mantis Warrior Green",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.416",
+    "name": "Troll Green",
+    "color": "#75C545",
+    "type": "Xpress",
+    "citadel": "Warp Lightning",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.417",
+    "name": "Snake Green",
+    "color": "#45A545",
+    "type": "Xpress",
+    "citadel": "Aeldari Emerald",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.418",
+    "name": "Lizard Green",
+    "color": "#357535",
+    "type": "Xpress",
+    "citadel": "Dark Angels Green",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.419",
+    "name": "Plague Green",
+    "color": "#556545",
+    "type": "Xpress",
+    "citadel": "Militarum Green",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.420",
+    "name": "Wasteland Brown",
+    "color": "#957555",
+    "type": "Xpress",
+    "citadel": "Snakebite Leather",
+    "owned": true,
+    "toBuy": false
+  },
+  {
+    "id": "72.421",
+    "name": "Copper Brown",
+    "color": "#754535",
+    "type": "Xpress",
+    "citadel": "Gore-Grunta Fur",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.422",
+    "name": "Space Grey",
+    "color": "#455565",
+    "type": "Xpress",
+    "citadel": "Nighthound Gloom",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.423",
+    "name": "Black Lotus",
+    "color": "#252525",
+    "type": "Xpress",
+    "citadel": "Black Templar",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.448",
+    "name": "Xpress Medium",
+    "color": "#F5F5F5",
+    "type": "Xpress",
+    "citadel": "Contrast Medium",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.449",
+    "name": "Mummy White",
+    "color": "#D5C5B5",
+    "type": "Xpress",
+    "citadel": "Baneblade Brown",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.450",
+    "name": "Bag of Bones",
+    "color": "#D5D5C5",
+    "type": "Xpress",
+    "citadel": "Skeleton Horde",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.451",
+    "name": "Khaki Drill",
+    "color": "#B5A585",
+    "type": "Xpress",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.452",
+    "name": "Rotten Flesh",
+    "color": "#B5C595",
+    "type": "Xpress",
+    "citadel": "Plaguebearer Flesh",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.453",
+    "name": "Military Yellow",
+    "color": "#C5B575",
+    "type": "Xpress",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.454",
+    "name": "Desert Ochre",
+    "color": "#C5A575",
+    "type": "Xpress",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.455",
+    "name": "Chameleon Orange",
+    "color": "#FF9545",
+    "type": "Xpress",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.456",
+    "name": "Wicked Purple",
+    "color": "#A54595",
+    "type": "Xpress",
+    "citadel": "Dreadful Visage",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.457",
+    "name": "Fairy Skin",
+    "color": "#F5D5C5",
+    "type": "Xpress",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.458",
+    "name": "Demonic Skin",
+    "color": "#D59585",
+    "type": "Xpress",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.459",
+    "name": "Fluid Pink",
+    "color": "#FF95C5",
+    "type": "Xpress",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.460",
+    "name": "Twilight Rose",
+    "color": "#D555A5",
+    "type": "Xpress",
+    "citadel": "Magos Purple",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.461",
+    "name": "Vampiric Purple",
+    "color": "#754585",
+    "type": "Xpress",
+    "citadel": "Leviathan Purple",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.462",
+    "name": "Starship Steel",
+    "color": "#657585",
+    "type": "Xpress",
+    "citadel": "Gryph-Charger Grey",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.463",
+    "name": "Iceberg Grey",
+    "color": "#B5C5D5",
+    "type": "Xpress",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.464",
+    "name": "Wagram Blue",
+    "color": "#3565A5",
+    "type": "Xpress",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.465",
+    "name": "Forest Green",
+    "color": "#357545",
+    "type": "Xpress",
+    "citadel": "Ork Flesh",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.466",
+    "name": "Armor Green",
+    "color": "#456545",
+    "type": "Xpress",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.467",
+    "name": "Camouflage Green",
+    "color": "#657555",
+    "type": "Xpress",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.468",
+    "name": "Commando Green",
+    "color": "#556555",
+    "type": "Xpress",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.469",
+    "name": "Landser Grey",
+    "color": "#757575",
+    "type": "Xpress",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.470",
+    "name": "Zombie Flesh",
+    "color": "#A5B595",
+    "type": "Xpress",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.471",
+    "name": "Tanned Skin",
+    "color": "#D4A585",
+    "type": "Xpress",
+    "citadel": "Fyreslayer Flesh",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.472",
+    "name": "Mahogany",
+    "color": "#653525",
+    "type": "Xpress",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.473",
+    "name": "Battledress Brown",
+    "color": "#755545",
+    "type": "Xpress",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.474",
+    "name": "Willow Bark",
+    "color": "#654535",
+    "type": "Xpress",
+    "citadel": "Wyldwood",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.475",
+    "name": "Muddy Ground",
+    "color": "#553525",
+    "type": "Xpress",
+    "citadel": "Cygor Brown",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.476",
+    "name": "Greasy Black",
+    "color": "#353535",
+    "type": "Xpress",
+    "citadel": "Ratling Grime",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.477",
+    "name": "Dreadnought Yellow",
+    "color": "#F8BB10",
+    "type": "Xpress Intense",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.478",
+    "name": "Phoenix Orange",
+    "color": "#E26B24",
+    "type": "Xpress Intense",
+    "citadel": "Magmadroth Flame",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.479",
+    "name": "Seraph Red",
+    "color": "#A11014",
+    "type": "Xpress Intense",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.480",
+    "name": "Legacy Blue",
+    "color": "#394593",
+    "type": "Xpress Intense",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.481",
+    "name": "Heretic Turquoise",
+    "color": "#197A6E",
+    "type": "Xpress Intense",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.482",
+    "name": "Monastic Green",
+    "color": "#007A45",
+    "type": "Xpress Intense",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.483",
+    "name": "Viking Grey",
+    "color": "#616679",
+    "type": "Xpress Intense",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  },
+  {
+    "id": "72.484",
+    "name": "Hospitallier Black",
+    "color": "#2E2D34",
+    "type": "Xpress Intense",
+    "citadel": "N/A",
+    "owned": false,
+    "toBuy": false
+  }
+]
