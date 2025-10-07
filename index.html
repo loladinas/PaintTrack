@@ -485,7 +485,7 @@
                                 Owned: {stats.owned}/{stats.total}
                             </span>
                             <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full">
-                                To Buy: {stats.toBuy}
+                                Wishlist: {stats.toBuy}
                             </span>
                         </div>
                     </div>
@@ -519,7 +519,7 @@
                                         onChange={(e) => handleNotOwnedFilter(e.target.checked)}
                                         className="mr-2"
                                     />
-                                    Not Owned
+                                    Missing
                                 </label>
                                 <label className="flex items-center">
                                     <input
@@ -528,7 +528,7 @@
                                         onChange={(e) => setFilters(prev => ({ ...prev, toBuy: e.target.checked }))}
                                         className="mr-2"
                                     />
-                                    To Buy
+                                    Wishlist
                                 </label>
                             </div>
                         </div>
