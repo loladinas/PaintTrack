@@ -326,21 +326,6 @@
                 total: paints.length
             }), [paints]);
 
-            const triadStats = useMemo(() => {
-                let complete = 0;
-                let missing1 = 0;
-                let missing2 = 0;
-
-                window.triads.forEach(triad => {
-                    const owned = triad.filter(id => paints.find(p => p.id === id)?.owned).length;
-                    if (owned === 3) complete++;
-                    else if (owned === 2) missing1++;
-                    else if (owned === 1) missing2++;
-                });
-
-                return { complete, missing1, missing2 };
-            }, [paints]);
-
             return (
                 <div className="max-w-7xl mx-auto p-4">
                     {/* Header with title and counters */}
@@ -544,54 +529,60 @@
                     {showTriads && (
                         <div className="mb-6 paint-group">
                             <h2 className="text-xl font-bold mb-4">
-                                Game Color Triads (BSL System)
-                                <span className="ml-4 text-sm font-normal">
-                                    <span className="text-green-600">Complete: {triadStats.complete}</span>
-                                    <span className="ml-4 text-yellow-600">Missing 1: {triadStats.missing1}</span>
-                                    <span className="ml-4 text-orange-600">Missing 2: {triadStats.missing2}</span>
-                                </span>
+                                Game Color Triads
                             </h2>
-                            <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 gap-2">
-                                {window.triads.map((triad, idx) => (
-                                    triad.map((paintId) => {
-                                        const paint = paints.find(p => p.id === paintId);
-                                        if (!paint) return <div key={`${idx}-${paintId}`} className="paint-swatch">Missing</div>;
-                                        return (
-                                            <div key={`${idx}-${paintId}`} className="paint-swatch">
-                                                <div 
-                                                    className="color-block mb-1"
-                                                    style={{ backgroundColor: paint.color }}
-                                                />
-                                                <div className="text-xs">{paint.id}</div>
-                                                <div className="text-xs truncate">{paint.name}</div>
-                                                <div className="text-xs text-gray-500 truncate">
-                                                    {paint.citadel || "N/A"}
-                                                </div>
-                                                <div className="flex gap-2 mt-1">
-                                                    <label className="text-xs flex items-center">
-                                                        <input
-                                                            type="checkbox"
-                                                            checked={paint.owned}
-                                                            onChange={(e) => handleOwned(paint.id, e.target.checked)}
-                                                            className="mr-1"
-                                                        />
-                                                        Own
-                                                    </label>
-                                                    <label className="text-xs flex items-center">
-                                                        <input
-                                                            type="checkbox"
-                                                            checked={paint.toBuy}
-                                                            disabled={paint.owned}
-                                                            onChange={(e) => handleToBuy(paint.id, e.target.checked)}
-                                                            className="mr-1"
-                                                        />
-                                                        Buy
-                                                    </label>
-                                                </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+                                {window.triads.map((triad, idx) => {
+                                    const ownedCount = triad.filter(id => paints.find(p => p.id === id)?.owned).length;
+                                    const bgColor = ownedCount === 3 ? 'bg-green-100' : 
+                                                   ownedCount === 2 ? 'bg-yellow-100' : 
+                                                   'bg-white';
+                                    
+                                    return (
+                                        <div key={idx} className={`${bgColor} border border-gray-200 rounded p-2`}>
+                                            <div className="grid grid-cols-3 gap-2">
+                                                {triad.map((paintId) => {
+                                                    const paint = paints.find(p => p.id === paintId);
+                                                    if (!paint) return <div key={`${idx}-${paintId}`} className="paint-swatch">Missing</div>;
+                                                    return (
+                                                        <div key={`${idx}-${paintId}`} className="paint-swatch">
+                                                            <div 
+                                                                className="color-block mb-1"
+                                                                style={{ backgroundColor: paint.color }}
+                                                            />
+                                                            <div className="text-xs">{paint.id}</div>
+                                                            <div className="text-xs truncate">{paint.name}</div>
+                                                            <div className="text-xs text-gray-500 truncate">
+                                                                {paint.citadel || "N/A"}
+                                                            </div>
+                                                            <div className="flex gap-2 mt-1">
+                                                                <label className="text-xs flex items-center">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={paint.owned}
+                                                                        onChange={(e) => handleOwned(paint.id, e.target.checked)}
+                                                                        className="mr-1"
+                                                                    />
+                                                                    Own
+                                                                </label>
+                                                                <label className="text-xs flex items-center">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={paint.toBuy}
+                                                                        disabled={paint.owned}
+                                                                        onChange={(e) => handleToBuy(paint.id, e.target.checked)}
+                                                                        className="mr-1"
+                                                                    />
+                                                                    Buy
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                })}
                                             </div>
-                                        );
-                                    })
-                                ))}
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </div>
                     )}
