@@ -56,6 +56,7 @@
             const [syncStatus, setSyncStatus] = useState('');
             const [showSyncModal, setShowSyncModal] = useState(false);
             const [showLoadConfirm, setShowLoadConfirm] = useState(false);
+            const [showResetConfirm, setShowResetConfirm] = useState(false);
             const [pendingHashData, setPendingHashData] = useState('');
             const [manualCode, setManualCode] = useState('');
 
@@ -167,10 +168,17 @@
             };
 
             const resetData = () => {
-                if (confirm('Are you sure you want to reset all data? This cannot be undone.')) {
-                    setPaints(prev => prev.map(p => ({ ...p, owned: false, toBuy: false })));
-                    localStorage.removeItem('vallejo-paint-data');
-                }
+                setShowResetConfirm(true);
+            };
+
+            const confirmReset = () => {
+                setPaints(prev => prev.map(p => ({ ...p, owned: false, toBuy: false })));
+                localStorage.removeItem('vallejo-paint-data');
+                setShowResetConfirm(false);
+            };
+
+            const cancelReset = () => {
+                setShowResetConfirm(false);
             };
 
             const shareToCloud = async () => {
@@ -260,12 +268,15 @@
                         if (showLoadConfirm) {
                             cancelLoad();
                         }
+                        if (showResetConfirm) {
+                            cancelReset();
+                        }
                     }
                 };
                 
                 window.addEventListener('keydown', handleEscape);
                 return () => window.removeEventListener('keydown', handleEscape);
-            }, [showSyncModal, showLoadConfirm]);
+            }, [showSyncModal, showLoadConfirm, showResetConfirm]);
 
             const filteredPaints = useMemo(() => {
                 let filtered = [...paints];
@@ -497,6 +508,33 @@
                                         className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
                                     >
                                         Replace My Data
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Reset confirmation modal */}
+                    {showResetConfirm && (
+                        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+                            <div className="bg-white rounded-lg p-6 max-w-md w-full">
+                                <h3 className="text-lg font-bold mb-4">⚠️ Reset All Data?</h3>
+                                <p className="text-sm text-gray-600 mb-4">
+                                    This will clear all your owned and wishlist paints. This action cannot be undone.
+                                    Consider exporting your collection first if you want to keep a backup.
+                                </p>
+                                <div className="flex gap-2 justify-end">
+                                    <button
+                                        onClick={cancelReset}
+                                        className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+                                    >
+                                        Cancel
+                                    </button>
+                                    <button
+                                        onClick={confirmReset}
+                                        className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                                    >
+                                        Reset Everything
                                     </button>
                                 </div>
                             </div>
