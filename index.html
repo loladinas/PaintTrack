@@ -71,6 +71,7 @@
 
             const [searchTerm, setSearchTerm] = useState('');
             const [showTriads, setShowTriads] = useState(false);
+            const [showFilterDropdown, setShowFilterDropdown] = useState(false);
             const [filters, setFilters] = useState({
                 owned: false,
                 notOwned: false,
@@ -257,7 +258,7 @@
                 window.history.replaceState(null, '', window.location.pathname);
             };
 
-            // Handle Escape key for modals
+            // Handle Escape key for modals and dropdown
             useEffect(() => {
                 const handleEscape = (e) => {
                     if (e.key === 'Escape') {
@@ -271,12 +272,31 @@
                         if (showResetConfirm) {
                             cancelReset();
                         }
+                        if (showFilterDropdown) {
+                            setShowFilterDropdown(false);
+                        }
                     }
                 };
                 
                 window.addEventListener('keydown', handleEscape);
                 return () => window.removeEventListener('keydown', handleEscape);
-            }, [showSyncModal, showLoadConfirm, showResetConfirm]);
+            }, [showSyncModal, showLoadConfirm, showResetConfirm, showFilterDropdown]);
+
+            // Handle click outside to close dropdown
+            useEffect(() => {
+                if (!showFilterDropdown) return;
+                
+                const handleClickOutside = (e) => {
+                    const dropdown = document.getElementById('filter-dropdown');
+                    const button = document.getElementById('filter-dropdown-button');
+                    if (dropdown && button && !dropdown.contains(e.target) && !button.contains(e.target)) {
+                        setShowFilterDropdown(false);
+                    }
+                };
+                
+                document.addEventListener('mousedown', handleClickOutside);
+                return () => document.removeEventListener('mousedown', handleClickOutside);
+            }, [showFilterDropdown]);
 
             const filteredPaints = useMemo(() => {
                 let filtered = [...paints];
@@ -351,46 +371,64 @@
                             className="flex-1 p-2 border rounded"
                         />
                         
-                        {/* Filter checkboxes with group border */}
-                        <div className="border border-gray-300 rounded-lg px-4 py-2 bg-gray-50">
-                            <div className="flex gap-4 text-base">
-                                <label className="flex items-center">
-                                    <input
-                                        type="checkbox"
-                                        checked={filters.owned}
-                                        onChange={(e) => handleOwnedFilter(e.target.checked)}
-                                        className="mr-2"
-                                    />
-                                    Owned
-                                </label>
-                                <label className="flex items-center">
-                                    <input
-                                        type="checkbox"
-                                        checked={filters.notOwned}
-                                        onChange={(e) => handleNotOwnedFilter(e.target.checked)}
-                                        className="mr-2"
-                                    />
-                                    Missing
-                                </label>
-                                <label className="flex items-center">
-                                    <input
-                                        type="checkbox"
-                                        checked={filters.toBuy}
-                                        onChange={(e) => setFilters(prev => ({ ...prev, toBuy: e.target.checked }))}
-                                        className="mr-2"
-                                    />
-                                    Wishlist
-                                </label>
-                            </div>
+                        {/* Filter dropdown */}
+                        <div className="relative">
+                            <button
+                                id="filter-dropdown-button"
+                                onClick={() => setShowFilterDropdown(!showFilterDropdown)}
+                                className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 whitespace-nowrap"
+                            >
+                                Filters ▾
+                            </button>
+                            {showFilterDropdown && (
+                                <div 
+                                    id="filter-dropdown"
+                                    className="absolute top-full mt-1 right-0 bg-white border border-gray-300 rounded-lg shadow-lg p-3 z-50 min-w-[200px]"
+                                >
+                                    <div className="flex flex-col gap-2">
+                                        <label className="flex items-center hover:bg-gray-50 p-2 rounded cursor-pointer">
+                                            <input
+                                                type="checkbox"
+                                                checked={filters.owned}
+                                                onChange={(e) => handleOwnedFilter(e.target.checked)}
+                                                className="mr-2"
+                                            />
+                                            <span className="text-sm">Owned</span>
+                                        </label>
+                                        <label className="flex items-center hover:bg-gray-50 p-2 rounded cursor-pointer">
+                                            <input
+                                                type="checkbox"
+                                                checked={filters.notOwned}
+                                                onChange={(e) => handleNotOwnedFilter(e.target.checked)}
+                                                className="mr-2"
+                                            />
+                                            <span className="text-sm">Missing</span>
+                                        </label>
+                                        <label className="flex items-center hover:bg-gray-50 p-2 rounded cursor-pointer">
+                                            <input
+                                                type="checkbox"
+                                                checked={filters.toBuy}
+                                                onChange={(e) => setFilters(prev => ({ ...prev, toBuy: e.target.checked }))}
+                                                className="mr-2"
+                                            />
+                                            <span className="text-sm">Wishlist</span>
+                                        </label>
+                                        <div className="border-t border-gray-200 my-1"></div>
+                                        <label className="flex items-center hover:bg-gray-50 p-2 rounded cursor-pointer">
+                                            <input
+                                                type="checkbox"
+                                                checked={showTriads}
+                                                onChange={(e) => setShowTriads(e.target.checked)}
+                                                className="mr-2"
+                                            />
+                                            <span className="text-sm">BSL Triads</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            )}
                         </div>
 
                         <div className="flex gap-2 flex-wrap">
-                            <button
-                                onClick={() => setShowTriads(!showTriads)}
-                                className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 whitespace-nowrap"
-                            >
-                                BSL
-                            </button>
                             <button 
                                 onClick={shareToCloud}
                                 className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 whitespace-nowrap"
@@ -529,13 +567,13 @@
                     {showTriads && (
                         <div className="mb-6 paint-group">
                             <h2 className="text-xl font-bold mb-4">
-                                Game Color Triads
+                                BSL Triads
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                                 {window.triads.map((triad, idx) => {
                                     const ownedCount = triad.filter(id => paints.find(p => p.id === id)?.owned).length;
-                                    const bgColor = ownedCount === 3 ? 'bg-green-100' : 
-                                                   ownedCount === 2 ? 'bg-yellow-100' : 
+                                    const bgColor = ownedCount === 3 ? 'bg-green-50' : 
+                                                   ownedCount === 2 ? 'bg-yellow-50' : 
                                                    'bg-white';
                                     
                                     return (
