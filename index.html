@@ -572,8 +572,8 @@
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                                 {window.triads.map((triad, idx) => {
                                     const ownedCount = triad.filter(id => paints.find(p => p.id === id)?.owned).length;
-                                    const bgColor = ownedCount === 3 ? 'bg-green-50' : 
-                                                   ownedCount === 2 ? 'bg-yellow-50' : 
+                                    const bgColor = ownedCount === 3 ? 'bg-green-100' : 
+                                                   ownedCount === 2 ? 'bg-yellow-100' : 
                                                    'bg-white';
                                     
                                     return (
