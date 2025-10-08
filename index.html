@@ -63,8 +63,8 @@
             useEffect(() => {
                 const hash = window.location.hash.slice(1);
                 if (hash && hash.length > 20) {
-                    setSyncStatus('Loading shared collection...');
-                    loadFromHash(hash);
+                    setPendingHashData(hash);
+                    setShowLoadConfirm(true);
                 }
             }, []);
 
