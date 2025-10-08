@@ -55,6 +55,8 @@
 
             const [syncStatus, setSyncStatus] = useState('');
             const [showSyncModal, setShowSyncModal] = useState(false);
+            const [showLoadConfirm, setShowLoadConfirm] = useState(false);
+            const [pendingHashData, setPendingHashData] = useState('');
             const [manualCode, setManualCode] = useState('');
 
             // Check for encoded data in URL hash on mount
@@ -224,14 +226,46 @@
 
             const handleManualLoad = () => {
                 if (manualCode.trim().length > 0) {
-                    loadFromHash(manualCode.trim());
+                    setPendingHashData(manualCode.trim());
                     setShowSyncModal(false);
+                    setShowLoadConfirm(true);
                     setManualCode('');
                 } else {
                     setSyncStatus('✗ Please enter a code');
                     setTimeout(() => setSyncStatus(''), 3000);
                 }
             };
+
+            const confirmLoad = () => {
+                loadFromHash(pendingHashData);
+                setShowLoadConfirm(false);
+                setPendingHashData('');
+            };
+
+            const cancelLoad = () => {
+                setShowLoadConfirm(false);
+                setPendingHashData('');
+                // Clear hash from URL if it was from URL
+                window.history.replaceState(null, '', window.location.pathname);
+            };
+
+            // Handle Escape key for modals
+            useEffect(() => {
+                const handleEscape = (e) => {
+                    if (e.key === 'Escape') {
+                        if (showSyncModal) {
+                            setShowSyncModal(false);
+                            setManualCode('');
+                        }
+                        if (showLoadConfirm) {
+                            cancelLoad();
+                        }
+                    }
+                };
+                
+                window.addEventListener('keydown', handleEscape);
+                return () => window.removeEventListener('keydown', handleEscape);
+            }, [showSyncModal, showLoadConfirm]);
 
             const filteredPaints = useMemo(() => {
                 let filtered = [...paints];
@@ -436,6 +470,33 @@
                                         className="px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700"
                                     >
                                         Load
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Load confirmation modal */}
+                    {showLoadConfirm && (
+                        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+                            <div className="bg-white rounded-lg p-6 max-w-md w-full">
+                                <h3 className="text-lg font-bold mb-4">⚠️ Overwrite Collection?</h3>
+                                <p className="text-sm text-gray-600 mb-4">
+                                    Loading this shared collection will replace your current paint data. 
+                                    Consider exporting your current collection first if you want to keep it.
+                                </p>
+                                <div className="flex gap-2 justify-end">
+                                    <button
+                                        onClick={cancelLoad}
+                                        className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+                                    >
+                                        Cancel
+                                    </button>
+                                    <button
+                                        onClick={confirmLoad}
+                                        className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                                    >
+                                        Replace My Data
                                     </button>
                                 </div>
                             </div>
