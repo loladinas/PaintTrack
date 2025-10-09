@@ -349,13 +349,13 @@
             return (
                 <div className="max-w-7xl mx-auto p-4">
                     {/* Header with title and counters */}
-                    <div className="mb-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-                        <h1 className="text-2xl sm:text-3xl font-bold">Vallejo Paint</h1>
-                        <div className="flex gap-2 sm:gap-4 flex-wrap">
-                            <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                    <div className="mb-4 flex justify-between items-center gap-3">
+                        <h1 className="text-2xl sm:text-3xl font-bold">Paint Tracker</h1>
+                        <div className="flex gap-2 flex-wrap">
+                            <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs sm:text-sm whitespace-nowrap">
                                 Owned: {stats.owned}/{stats.total}
                             </span>
-                            <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
+                            <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs sm:text-sm whitespace-nowrap">
                                 Wishlist: {stats.toBuy}
                             </span>
                         </div>
