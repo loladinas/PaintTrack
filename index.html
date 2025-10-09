@@ -349,20 +349,20 @@
             return (
                 <div className="max-w-7xl mx-auto p-4">
                     {/* Header with title and counters */}
-                    <div className="mb-4 flex justify-between items-center">
-                        <h1 className="text-3xl font-bold">Vallejo Paint Tracker</h1>
-                        <div className="flex gap-4">
-                            <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+                    <div className="mb-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+                        <h1 className="text-2xl sm:text-3xl font-bold">Vallejo Paint Tracker</h1>
+                        <div className="flex gap-2 sm:gap-4 flex-wrap">
+                            <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
                                 Owned: {stats.owned}/{stats.total}
                             </span>
-                            <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full">
+                            <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
                                 Wishlist: {stats.toBuy}
                             </span>
                         </div>
                     </div>
 
                     {/* Search, filters and buttons row */}
-                    <div className="mb-6 flex flex-col sm:flex-row gap-4 items-center">
+                    <div className="mb-6 flex flex-col gap-3 sm:gap-4 sm:flex-row sm:items-center">
                         <input
                             type="text"
                             placeholder="Search by name or ID..."
