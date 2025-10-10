@@ -362,8 +362,9 @@
                     </div>
 
                     {/* Search, filters and buttons row */}
-<div className="mb-6 flex flex-col gap-3 sm:gap-4 sm:flex-row sm:items-center">
-    <div className="flex gap-2 w-full">
+{/* Search, filters and buttons row */}
+<div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+    <div className="flex gap-2 flex-1 min-w-0">
         <input
             type="text"
             placeholder="Search by name or ID..."
@@ -377,7 +378,7 @@
             <button
                 id="filter-dropdown-button"
                 onClick={() => setShowFilterDropdown(!showFilterDropdown)}
-                className="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 whitespace-nowrap h-full"
+                className="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 whitespace-nowrap"
             >
                 Filters ▾
             </button>
@@ -430,7 +431,7 @@
         </div>
     </div>
 
-    <div className="flex gap-2 flex-wrap">
+    <div className="flex gap-2 flex-wrap justify-center sm:justify-start">
         <button 
             onClick={shareToCloud}
             className="px-3 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 whitespace-nowrap"
