@@ -41,6 +41,111 @@
     <script type="text/babel">
         const { useState, useEffect, useMemo, useCallback } = React;
 
+        // ============== Encoding/Decoding Functions ==============
+        
+        /**
+         * Encodes paint collection into a compact binary format
+         * Uses 2 bits per paint: 00=neither, 01=toBuy, 10=owned
+         * Results in ~10x smaller URLs than JSON encoding
+         */
+        function encodePaints(paints) {
+            // Each paint needs 2 bits, so 4 paints per byte
+            const bytes = new Uint8Array(Math.ceil(paints.length / 4));
+            
+            paints.forEach((paint, index) => {
+                // Calculate which byte and which position within that byte
+                const byteIndex = Math.floor(index / 4);
+                const bitOffset = (index % 4) * 2;
+                
+                // Encode status: owned=2, toBuy=1, neither=0
+                let status = 0;
+                if (paint.owned) status = 2;
+                else if (paint.toBuy) status = 1;
+                
+                // Store the 2-bit status in the correct position
+                bytes[byteIndex] |= status << bitOffset;
+            });
+            
+            // Convert to base64 for URL-safe string
+            const binaryString = String.fromCharCode(...bytes);
+            return btoa(binaryString);
+        }
+
+        /**
+         * Decodes a compact binary string back into paint ownership data
+         */
+        function decodePaints(encodedString, paints) {
+            try {
+                // Convert from base64 back to bytes
+                const binaryString = atob(encodedString);
+                const bytes = new Uint8Array(binaryString.length);
+                for (let i = 0; i < binaryString.length; i++) {
+                    bytes[i] = binaryString.charCodeAt(i);
+                }
+                
+                // Extract status for each paint
+                return paints.map((paint, index) => {
+                    const byteIndex = Math.floor(index / 4);
+                    const bitOffset = (index % 4) * 2;
+                    
+                    // Extract the 2-bit status
+                    const status = (bytes[byteIndex] >> bitOffset) & 0b11;
+                    
+                    return {
+                        ...paint,
+                        owned: status === 2,
+                        toBuy: status === 1
+                    };
+                });
+            } catch (error) {
+                console.error('Error decoding:', error);
+                return paints; // Return unchanged if decode fails
+            }
+        }
+
+        /**
+         * Decodes old JSON format for backward compatibility
+         */
+        function decodeLegacyFormat(encodedString, paints) {
+            try {
+                const jsonString = atob(encodedString);
+                const imported = JSON.parse(jsonString);
+                
+                // Create lookup sets using idx
+                const ownedIdxSet = new Set(imported.owned || []);
+                const toBuyIdxSet = new Set(imported.toBuy || []);
+                
+                return paints.map(paint => ({
+                    ...paint,
+                    owned: ownedIdxSet.has(paint.idx),
+                    toBuy: toBuyIdxSet.has(paint.idx)
+                }));
+            } catch (error) {
+                console.error('Error decoding legacy format:', error);
+                return paints;
+            }
+        }
+
+        /**
+         * Detects and decodes both new and old format links
+         */
+        function decodeSmartFormat(encodedString, paints) {
+            // Check if it's the old JSON format by trying to decode and check for JSON structure
+            try {
+                const decoded = atob(encodedString);
+                if (decoded.startsWith('{') || decoded.startsWith('[')) {
+                    // It's JSON - use legacy decoder
+                    console.log('Detected legacy JSON format');
+                    return decodeLegacyFormat(encodedString, paints);
+                }
+            } catch (e) {
+                // Not valid base64 or not JSON, try new format
+            }
+            
+            // Use new compact format
+            return decodePaints(encodedString, paints);
+        }
+
         function App() {
             // ============== State Management ==============
             
@@ -99,7 +204,7 @@
             // Check for encoded data in URL hash on component mount
             useEffect(() => {
                 const hash = window.location.hash.slice(1);
-                if (hash && hash.length > 20) {
+                if (hash && hash.length > 0) {
                     setPendingHashData(hash);
                     setShowLoadConfirm(true);
                 }
@@ -301,26 +406,23 @@
             // ============== Sharing/Sync Handlers ==============
             
             /**
-             * Create shareable URL with encoded paint data
+             * Create shareable URL with compact encoded paint data
+             * Uses new binary encoding for ~10x smaller URLs
              */
             const handleShareToCloud = useCallback(async () => {
                 setSyncStatus('Creating share link...');
                 try {
-                    // Use idx for more compact encoding
-                    const dataToShare = {
-                        owned: paints.filter(p => p.owned).map(p => p.idx),
-                        toBuy: paints.filter(p => p.toBuy).map(p => p.idx)
-                    };
-
-                    // Encode data in URL hash
-                    const jsonString = JSON.stringify(dataToShare);
-                    const encoded = btoa(jsonString);
+                    // Use new compact encoding
+                    const encoded = encodePaints(paints);
                     const shareUrl = `${window.location.origin}${window.location.pathname}#${encoded}`;
+                    
+                    // Show size comparison for debugging
+                    console.log(`URL size: ${shareUrl.length} characters (new compact format)`);
                     
                     // Copy to clipboard
                     await navigator.clipboard.writeText(shareUrl);
                     
-                    setSyncStatus('✓ Link copied to clipboard!');
+                    setSyncStatus(`✓ Link copied to clipboard! (${shareUrl.length} chars)`);
                     setTimeout(() => setSyncStatus(''), 5000);
                 } catch (error) {
                     console.error('Share error:', error);
@@ -330,23 +432,14 @@
             }, [paints]);
 
             /**
-             * Load paint data from base64 encoded string
+             * Load paint data from encoded string (supports both old and new formats)
              */
             const loadFromHash = useCallback((encodedData) => {
                 setSyncStatus('Loading from URL...');
                 try {
-                    const jsonString = atob(encodedData);
-                    const imported = JSON.parse(jsonString);
-
-                    // Create lookup sets using idx for efficiency
-                    const ownedIdxSet = new Set(imported.owned || []);
-                    const toBuyIdxSet = new Set(imported.toBuy || []);
-                    
-                    setPaints(prev => prev.map(paint => ({
-                        ...paint,
-                        owned: ownedIdxSet.has(paint.idx),
-                        toBuy: toBuyIdxSet.has(paint.idx)
-                    })));
+                    // Smart decode - handles both new and old formats
+                    const decodedPaints = decodeSmartFormat(encodedData, paints);
+                    setPaints(decodedPaints);
 
                     setSyncStatus('✓ Loaded successfully!');
                     setTimeout(() => setSyncStatus(''), 3000);
@@ -358,7 +451,7 @@
                     setSyncStatus(`✗ Error loading data: ${error.message}`);
                     setTimeout(() => setSyncStatus(''), 5000);
                 }
-            }, []);
+            }, [paints]);
 
             /**
              * Handle manual code entry for loading
@@ -604,6 +697,9 @@
                                 <h3 className="text-lg font-bold mb-4">Load from Code</h3>
                                 <p className="text-sm text-gray-600 mb-4">
                                     Paste the code from the end of your shared URL:
+                                </p>
+                                <p className="text-xs text-gray-500 mb-2">
+                                    (Works with both old and new format codes)
                                 </p>
                                 <input
                                     type="text"
