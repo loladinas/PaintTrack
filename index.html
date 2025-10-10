@@ -362,110 +362,112 @@
                     </div>
 
                     {/* Search, filters and buttons row */}
-                    <div className="mb-6 flex flex-col gap-3 sm:gap-4 sm:flex-row sm:items-center">
-                        <input
-                            type="text"
-                            placeholder="Search by name or ID..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className="flex-1 p-2 border rounded"
-                        />
-                        
-                        {/* Filter dropdown */}
-                        <div className="relative">
-                            <button
-                                id="filter-dropdown-button"
-                                onClick={() => setShowFilterDropdown(!showFilterDropdown)}
-                                className="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 whitespace-nowrap"
-                            >
-                                Filters ▾
-                            </button>
-                            {showFilterDropdown && (
-                                <div 
-                                    id="filter-dropdown"
-                                    className="absolute top-full mt-1 right-0 bg-white border border-gray-300 rounded-lg shadow-lg p-3 z-50 min-w-[200px]"
-                                >
-                                    <div className="flex flex-col gap-2">
-                                        <label className="flex items-center hover:bg-gray-50 p-2 rounded cursor-pointer">
-                                            <input
-                                                type="checkbox"
-                                                checked={filters.owned}
-                                                onChange={(e) => handleOwnedFilter(e.target.checked)}
-                                                className="mr-2"
-                                            />
-                                            <span className="text-sm">Owned</span>
-                                        </label>
-                                        <label className="flex items-center hover:bg-gray-50 p-2 rounded cursor-pointer">
-                                            <input
-                                                type="checkbox"
-                                                checked={filters.notOwned}
-                                                onChange={(e) => handleNotOwnedFilter(e.target.checked)}
-                                                className="mr-2"
-                                            />
-                                            <span className="text-sm">Missing</span>
-                                        </label>
-                                        <label className="flex items-center hover:bg-gray-50 p-2 rounded cursor-pointer">
-                                            <input
-                                                type="checkbox"
-                                                checked={filters.toBuy}
-                                                onChange={(e) => setFilters(prev => ({ ...prev, toBuy: e.target.checked }))}
-                                                className="mr-2"
-                                            />
-                                            <span className="text-sm">Wishlist</span>
-                                        </label>
-                                        <div className="border-t border-gray-200 my-1"></div>
-                                        <label className="flex items-center hover:bg-gray-50 p-2 rounded cursor-pointer">
-                                            <input
-                                                type="checkbox"
-                                                checked={showTriads}
-                                                onChange={(e) => setShowTriads(e.target.checked)}
-                                                className="mr-2"
-                                            />
-                                            <span className="text-sm">BSL Triads</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="flex gap-2 flex-wrap">
-                            <button 
-                                onClick={shareToCloud}
-                                className="px-3 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 whitespace-nowrap"
-                                title="Create a shareable link for other devices"
-                            >
-                                Share
-                            </button>
-                            <button 
-                                onClick={() => setShowSyncModal(true)}
-                                className="px-3 py-2 bg-teal-600 text-white rounded hover:bg-teal-700 whitespace-nowrap"
-                                title="Load collection from a code"
-                            >
-                                Load
-                            </button>
-                            <button 
-                                onClick={exportData}
-                                className="px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 whitespace-nowrap"
-                            >
-                                Export
-                            </button>
-                            <label className="px-3 py-2 bg-green-600 text-white rounded hover:bg-green-700 cursor-pointer whitespace-nowrap">
-                                Import
-                                <input 
-                                    type="file" 
-                                    accept=".json"
-                                    onChange={importData}
-                                    className="hidden"
-                                />
-                            </label>
-                            <button 
-                                onClick={resetData}
-                                className="px-3 py-2 bg-red-600 text-white rounded hover:bg-red-700 whitespace-nowrap"
-                            >
-                                Reset
-                            </button>
-                        </div>
+<div className="mb-6 flex flex-col gap-3 sm:gap-4 sm:flex-row sm:items-center">
+    <div className="flex gap-2 w-full">
+        <input
+            type="text"
+            placeholder="Search by name or ID..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="flex-1 min-w-0 p-2 border rounded"
+        />
+        
+        <!-- Filter dropdown -->
+        <div className="relative flex-shrink-0">
+            <button
+                id="filter-dropdown-button"
+                onClick={() => setShowFilterDropdown(!showFilterDropdown)}
+                className="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 whitespace-nowrap h-full"
+            >
+                Filters ▾
+            </button>
+            {showFilterDropdown && (
+                <div 
+                    id="filter-dropdown"
+                    className="absolute top-full mt-1 right-0 bg-white border border-gray-300 rounded-lg shadow-lg p-3 z-50 min-w-[200px]"
+                >
+                    <div className="flex flex-col gap-2">
+                        <label className="flex items-center hover:bg-gray-50 p-2 rounded cursor-pointer">
+                            <input
+                                type="checkbox"
+                                checked={filters.owned}
+                                onChange={(e) => handleOwnedFilter(e.target.checked)}
+                                className="mr-2"
+                            />
+                            <span className="text-sm">Owned</span>
+                        </label>
+                        <label className="flex items-center hover:bg-gray-50 p-2 rounded cursor-pointer">
+                            <input
+                                type="checkbox"
+                                checked={filters.notOwned}
+                                onChange={(e) => handleNotOwnedFilter(e.target.checked)}
+                                className="mr-2"
+                            />
+                            <span className="text-sm">Missing</span>
+                        </label>
+                        <label className="flex items-center hover:bg-gray-50 p-2 rounded cursor-pointer">
+                            <input
+                                type="checkbox"
+                                checked={filters.toBuy}
+                                onChange={(e) => setFilters(prev => ({ ...prev, toBuy: e.target.checked }))}
+                                className="mr-2"
+                            />
+                            <span className="text-sm">Wishlist</span>
+                        </label>
+                        <div className="border-t border-gray-200 my-1"></div>
+                        <label className="flex items-center hover:bg-gray-50 p-2 rounded cursor-pointer">
+                            <input
+                                type="checkbox"
+                                checked={showTriads}
+                                onChange={(e) => setShowTriads(e.target.checked)}
+                                className="mr-2"
+                            />
+                            <span className="text-sm">BSL Triads</span>
+                        </label>
                     </div>
+                </div>
+            )}
+        </div>
+    </div>
+
+    <div className="flex gap-2 flex-wrap">
+        <button 
+            onClick={shareToCloud}
+            className="px-3 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 whitespace-nowrap"
+            title="Create a shareable link for other devices"
+        >
+            Share
+        </button>
+        <button 
+            onClick={() => setShowSyncModal(true)}
+            className="px-3 py-2 bg-teal-600 text-white rounded hover:bg-teal-700 whitespace-nowrap"
+            title="Load collection from a code"
+        >
+            Load
+        </button>
+        <button 
+            onClick={exportData}
+            className="px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 whitespace-nowrap"
+        >
+            Export
+        </button>
+        <label className="px-3 py-2 bg-green-600 text-white rounded hover:bg-green-700 cursor-pointer whitespace-nowrap">
+            Import
+            <input 
+                type="file" 
+                accept=".json"
+                onChange={importData}
+                className="hidden"
+            />
+        </label>
+        <button 
+            onClick={resetData}
+            className="px-3 py-2 bg-red-600 text-white rounded hover:bg-red-700 whitespace-nowrap"
+        >
+            Reset
+        </button>
+    </div>
+</div>
 
                     {/* Sync status message */}
                     {syncStatus && (
