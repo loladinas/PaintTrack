@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Vallejo Paint Tracker</title>
+<script src="data.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;padding:1rem;max-width:1400px;margin:0 auto;background:#f5f5f5}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:1rem}
+h1{font-size:1.8rem}
+.stats{display:flex;gap:.5rem}
+.stat{background:#e3f2fd;padding:.5rem 1rem;border-radius:9999px;font-size:.85rem}
+.stat b{color:#1976d2}
+.controls{background:white;padding:1rem;border-radius:.5rem;margin-bottom:1rem;box-shadow:0 1px 3px rgba(0,0,0,.1);display:flex;flex-wrap:wrap;gap:.5rem;align-items:flex-start}
+input[type=text]{flex:1;min-width:200px;padding:.5rem;border:1px solid #ddd;border-radius:.25rem;font:inherit}
+.buttons{display:flex;gap:.5rem;flex-wrap:wrap}
+button,select{padding:.5rem 1rem;border:none;background:#666;color:white;border-radius:.25rem;cursor:pointer;font:inherit;white-space:nowrap}
+button:hover{background:#555}
+@media(max-width:767px){
+  input[type=text]{width:100%;flex-basis:100%}
+  .buttons{width:100%}
+}
+.btn-primary{background:#1976d2}
+.btn-primary:hover{background:#1565c0}
+.btn-danger{background:#d32f2f}
+.btn-danger:hover{background:#c62828}
+label.check{display:flex;align-items:center;gap:.5rem;padding:.5rem;cursor:pointer;border-radius:.25rem}
+label.check:hover{background:#f5f5f5}
+.group{background:white;padding:1rem;border-radius:.5rem;margin-bottom:1rem;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.group h2{font-size:1.2rem;margin-bottom:.75rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:.5rem}
+@media(min-width:640px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:768px){.grid{grid-template-columns:repeat(6,1fr)}}
+@media(min-width:1024px){.grid{grid-template-columns:repeat(9,1fr)}}
+.paint{border:1px solid #e5e7eb;border-radius:.25rem;padding:.5rem;background:white}
+.color{aspect-ratio:2.975/1;border:1px solid #d1d5db;border-radius:.25rem;margin-bottom:.25rem;cursor:pointer}
+.id{font-weight:600;font-size:.75rem;margin-bottom:.1rem}
+.name{font-size:.75rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:.1rem}
+.citadel{font-size:.7rem;color:#666;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.checks{display:flex;gap:.5rem;margin-top:.25rem}
+.checks label{display:flex;align-items:center;gap:.2rem;font-size:.7rem;cursor:pointer}
+input[type=checkbox]{cursor:pointer}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);align-items:center;justify-content:center;padding:1rem;z-index:1000}
+.modal.show{display:flex}
+.modal-content{background:white;border-radius:.5rem;padding:1.5rem;max-width:500px;width:100%}
+.modal h3{margin-bottom:1rem;font-size:1.2rem}
+.modal p{margin-bottom:1rem;color:#666;font-size:.9rem}
+.modal input{width:100%;padding:.5rem;border:1px solid #ddd;border-radius:.25rem;font:inherit;margin-bottom:1rem}
+.modal-actions{display:flex;gap:.5rem;justify-content:flex-end}
+.status{background:#e3f2fd;border:1px solid #90caf9;padding:.75rem;border-radius:.25rem;margin-bottom:1rem;font-size:.9rem}
+.triad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:.5rem}
+.triad{background:white;border:1px solid #ddd;border-radius:.25rem;padding:.5rem}
+.triad.complete{background:#c8e6c9}
+.triad.partial{background:#fff9c4}
+.triad-paints{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>Paint Tracker</h1>
+<div class="stats">
+<span class="stat">Owned: <b id="owned">0</b>/<b>196</b></span>
+<span class="stat">Wishlist: <b id="wish">0</b></span>
+</div>
+</div>
+<div class="controls">
+<input type="text" id="search" placeholder="Search paints...">
+<button id="filter-btn">Filters ▾</button>
+<div class="buttons">
+<button class="btn-primary" id="share-btn">Share</button>
+<button id="load-btn">Load</button>
+<button class="btn-danger" id="reset-btn">Reset</button>
+</div>
+<div id="filters" style="display:none;width:100%;margin-top:.5rem;padding-top:.5rem;border-top:1px solid #eee">
+<label class="check"><input type="checkbox" id="f-owned"> Owned</label>
+<label class="check"><input type="checkbox" id="f-missing"> Missing</label>
+<label class="check"><input type="checkbox" id="f-wish"> Wishlist</label>
+<label class="check"><input type="checkbox" id="f-triads"> BSL Triads</label>
+</div>
+</div>
+<div id="status" class="status" style="display:none"></div>
+<div id="triads" style="display:none"></div>
+<div id="app"></div>
+<div id="modal" class="modal">
+<div class="modal-content">
+<h3 id="modal-title"></h3>
+<p id="modal-text"></p>
+<input type="text" id="modal-input" style="display:none">
+<div class="modal-actions">
+<button id="modal-cancel">Cancel</button>
+<button class="btn-primary" id="modal-confirm"></button>
+</div>
+</div>
+</div>
+<script>
+const T=["Regular","Metallic","Ink","Wash","Fluo","Special FX","Auxiliary","Xpress","Xpress Intense"];
+const TN={"Regular":"Game Color","Metallic":"Game Color Metallic","Ink":"Game Color Ink","Wash":"Game Color Wash","Fluo":"Game Color Fluo","Special FX":"Game Color Special FX","Auxiliary":"Auxiliary Products","Xpress":"Xpress Color","Xpress Intense":"Xpress Color Intense"};
+let P=window.paintData.map(e=>({...e,owned:false,toBuy:false}));
+let s='',filters={owned:false,missing:false,toBuy:false,triads:false};
+function ep(p){const b=new Uint8Array(Math.ceil(p.length/4));p.forEach((a,i)=>{const x=Math.floor(i/4),o=(i%4)*2,s=a.owned?2:a.toBuy?1:0;b[x]|=s<<o});return btoa(String.fromCharCode(...b))}
+function dp(s,p){try{const b=atob(s),a=new Uint8Array(b.length);for(let i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return p.map((e,i)=>{const x=Math.floor(i/4),o=(i%4)*2,v=(a[x]>>o)&3;return{...e,owned:v===2,toBuy:v===1}})}catch{return p}}
+function load(){try{const d=JSON.parse(localStorage.getItem('vallejo-paint-data')||'{}');const o=new Set(d.owned||[]),t=new Set(d.toBuy||[]);P.forEach(e=>{e.owned=o.has(e.i);e.toBuy=t.has(e.i)})}catch{}}
+function save(){const d={owned:P.filter(e=>e.owned).map(e=>e.i),toBuy:P.filter(e=>e.toBuy).map(e=>e.i)};localStorage.setItem('vallejo-paint-data',JSON.stringify(d))}
+function showStatus(msg,time=3000){const el=document.getElementById('status');el.textContent=msg;el.style.display='block';setTimeout(()=>el.style.display='none',time)}
+function showModal(title,text,confirmText,onConfirm,showInput=false){const m=document.getElementById('modal');document.getElementById('modal-title').textContent=title;document.getElementById('modal-text').textContent=text;document.getElementById('modal-confirm').textContent=confirmText;const input=document.getElementById('modal-input');input.style.display=showInput?'block':'none';input.value='';m.classList.add('show');document.getElementById('modal-confirm').onclick=()=>{m.classList.remove('show');onConfirm(input.value)};document.getElementById('modal-cancel').onclick=()=>m.classList.remove('show')}
+function updateStats(){document.getElementById('owned').textContent=P.filter(p=>p.owned).length;document.getElementById('wish').textContent=P.filter(p=>p.toBuy).length}
+function renderTriads(){const el=document.getElementById('triads');if(!filters.triads){el.style.display='none';return}el.style.display='block';let h='<div class="group"><h2>BSL Triads</h2><div class="triad-grid">';window.triads.forEach(tr=>{const paints=tr.map(id=>P.find(p=>p.i===id));const owned=paints.filter(p=>p&&p.owned).length;const cls=owned===3?'complete':owned>=1?'partial':'';h+=`<div class="triad ${cls}"><div class="triad-paints">`;paints.forEach(pa=>{if(!pa){h+=`<div class="paint"><span style="color:#999;font-size:.7rem">Missing</span></div>`;return}h+=`<div class="paint"><div class="color" style="background:${pa.c}" title="${pa.n}"></div><div class="id">${pa.i}</div><div class="name" title="${pa.n}">${pa.n}</div><div class="citadel" title="${pa.x||'N/A'}">${pa.x||'N/A'}</div><div class="checks"><label><input type="checkbox" data-i="${pa.i}" data-t="o" ${pa.owned?'checked':''}> Own</label><label><input type="checkbox" data-i="${pa.i}" data-t="w" ${pa.toBuy?'checked':''} ${pa.owned?'disabled':''}> Buy</label></div></div>`});h+='</div></div>'});h+='</div></div>';el.innerHTML=h}
+function render(){let ps=P.filter(p=>{if(s&&!p.n.toLowerCase().includes(s)&&!p.i.toLowerCase().includes(s))return false;if(filters.owned&&!p.owned)return false;if(filters.missing&&p.owned)return false;if(filters.toBuy&&!p.toBuy)return false;return true});const g={};ps.forEach(p=>{const k=T[p.t];if(!g[k])g[k]=[];g[k].push(p)});let h='';T.forEach(ty=>{if(!g[ty])return;h+=`<div class="group"><h2>${TN[ty]||ty}</h2><div class="grid">`;g[ty].forEach(pa=>{h+=`<div class="paint"><div class="color" style="background:${pa.c}" title="${pa.n}"></div><div class="id">${pa.i}</div><div class="name" title="${pa.n}">${pa.n}</div><div class="citadel" title="${pa.x||'N/A'}">${pa.x||'N/A'}</div><div class="checks"><label><input type="checkbox" data-i="${pa.i}" data-t="o" ${pa.owned?'checked':''}> Own</label><label><input type="checkbox" data-i="${pa.i}" data-t="w" ${pa.toBuy?'checked':''} ${pa.owned?'disabled':''}> Buy</label></div></div>`});h+='</div></div>'});document.getElementById('app').innerHTML=h;renderTriads();updateStats()}
+document.getElementById('search').oninput=e=>{s=e.target.value.toLowerCase();render()};
+document.getElementById('filter-btn').onclick=()=>{const el=document.getElementById('filters');el.style.display=el.style.display==='none'?'block':'none'};
+document.getElementById('f-owned').onchange=e=>{filters.owned=e.target.checked;if(filters.owned)filters.missing=false;render()};
+document.getElementById('f-missing').onchange=e=>{filters.missing=e.target.checked;if(filters.missing)filters.owned=false;render()};
+document.getElementById('f-wish').onchange=e=>{filters.toBuy=e.target.checked;render()};
+document.getElementById('f-triads').onchange=e=>{filters.triads=e.target.checked;render()};
+document.getElementById('share-btn').onclick=async()=>{try{const enc=ep(P);const url=`${location.origin}${location.pathname}#${enc}`;await navigator.clipboard.writeText(url);showStatus(`✓ Link copied! (${url.length} chars)`,5000)}catch(e){showStatus(`✗ Error: ${e.message}`,5000)}};
+document.getElementById('load-btn').onclick=()=>{showModal('Load from Code','Paste the code from your shared URL:','Load',code=>{if(!code.trim())return showStatus('✗ Please enter a code');try{P=dp(code.trim(),P);save();render();showStatus('✓ Loaded successfully!')}catch(e){showStatus(`✗ Error: ${e.message}`,5000)}},true)};
+document.getElementById('reset-btn').onclick=()=>{showModal('⚠️ Reset All Data?','This will clear all your data. Share a link first if you want to keep it.','Reset Everything',()=>{P.forEach(p=>{p.owned=false;p.toBuy=false});save();render();showStatus('✓ Reset complete')})};
+document.body.onclick=e=>{if(e.target.type==='checkbox'&&e.target.dataset.i){const i=e.target.dataset.i,t=e.target.dataset.t,p=P.find(x=>x.i===i);if(p){if(t==='o'){p.owned=e.target.checked;if(p.owned)p.toBuy=false}else{p.toBuy=e.target.checked}save();render()}}};
+window.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('modal').classList.remove('show');document.getElementById('filters').style.display='none'}});
+if(location.hash){const code=location.hash.slice(1);showModal('⚠️ Overwrite Collection?','Loading will replace your current data. Share a link first if you want to keep it.','Replace My Data',()=>{try{P=dp(code,P);save();render();history.replaceState(null,'',location.pathname);showStatus('✓ Loaded successfully!')}catch(e){showStatus(`✗ Error: ${e.message}`,5000)}})}
+load();render();
+</script>
+</body>
+</html>
