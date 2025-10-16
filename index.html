@@ -7,69 +7,7 @@
 <title>Vallejo Paint Tracker</title>
 <script src="data.js"></script>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,sans-serif;padding:1rem;max-width:1400px;margin:0 auto;background:#f5f5f5}
-.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:1rem}
-h1{font-size:1.8rem}
-.stats{display:flex;gap:.5rem}
-.stat{background:#e3f2fd;padding:.5rem 1rem;border-radius:9999px;font-size:.85rem}
-.stat b{color:#1976d2}
-.controls{background:#fff;padding:1rem;border-radius:.5rem;margin-bottom:1rem;box-shadow:0 1px 3px rgba(0,0,0,.1);display:flex;flex-wrap:wrap;gap:.5rem;align-items:flex-start}
-.controls > :not(input){flex-shrink:0}
-input[type=text]{flex:1;min-width:0;padding:.5rem;border:1px solid #ddd;border-radius:.25rem;font:inherit;height:2.375rem;line-height:1rem}
-.buttons{display:flex;gap:.5rem;flex-wrap:wrap}
-button,select{padding:.5rem 1rem;border:none;background:#666;color:#fff;border-radius:.25rem;cursor:pointer;font:inherit;white-space:nowrap;height:2.375rem;line-height:1rem;display:flex;align-items:center;justify-content:center}
-button:hover{background:#555}
-@media(max-width:767px){
-  input[type=text]{
-    width:100%;
-    flex-basis:100%
-  }
-  #filter-btn{
-    flex-shrink:0
-  }
-  .buttons{
-    display:flex;
-    flex-wrap:nowrap;
-    gap:.5rem
-  }
-  .controls{
-    justify-content:center
-  }
-}
-.btn-primary{background:#1976d2}
-.btn-primary:hover{background:#1565c0}
-.btn-danger{background:#d32f2f}
-.btn-danger:hover{background:#c62828}
-label.check{display:flex;align-items:center;gap:.5rem;padding:.5rem;cursor:pointer;border-radius:.25rem}
-label.check:hover{background:#f5f5f5}
-.group{background:#fff;padding:1rem;border-radius:.5rem;margin-bottom:1rem;box-shadow:0 1px 3px rgba(0,0,0,.1)}
-.group h2{font-size:1.2rem;margin-bottom:.75rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:.5rem}
-@media(min-width:640px){.grid{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:768px){.grid{grid-template-columns:repeat(6,1fr)}}
-@media(min-width:1024px){.grid{grid-template-columns:repeat(9,1fr)}}
-.paint{border:1px solid #e5e7eb;border-radius:.25rem;padding:.5rem;background:#fff}
-.color{aspect-ratio:2.975/1;border:1px solid #d1d5db;border-radius:.25rem;margin-bottom:.25rem;cursor:pointer}
-.id{font-weight:600;font-size:.75rem;margin-bottom:.1rem}
-.name{font-size:.75rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:.1rem}
-.citadel{font-size:.7rem;color:#666;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.checks{display:flex;gap:.5rem;margin-top:.25rem}
-.checks label{display:flex;align-items:center;gap:.2rem;font-size:.7rem;cursor:pointer}
-input[type=checkbox]{cursor:pointer}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);align-items:center;justify-content:center;padding:1rem;z-index:1000}
-.modal.show{display:flex}
-.modal-content{background:#fff;border-radius:.5rem;padding:1.5rem;max-width:500px;width:100%}
-.modal h3{margin-bottom:1rem;font-size:1.2rem}
-.modal p{margin-bottom:1rem;color:#666;font-size:.9rem}
-.modal input{width:100%;padding:.5rem;border:1px solid #ddd;border-radius:.25rem;font:inherit;margin-bottom:1rem}
-.modal-actions{display:flex;gap:.5rem;justify-content:flex-end}
-.status{background:#e3f2fd;border:1px solid #90caf9;padding:.75rem;border-radius:.25rem;margin-bottom:1rem;font-size:.9rem}
-.triad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:.5rem}
-.triad{background:#fff;border:1px solid #ddd;border-radius:.25rem;padding:.5rem}
-.triad.complete{background:#c8e6c9}
-.triad.partial{background:#fff9c4}
-.triad-paints{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,-apple-system,sans-serif;padding:1rem;max-width:1400px;margin:0 auto;background:#f5f5f5}.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:1rem}h1{font-size:1.8rem}.stats{display:flex;gap:.5rem}.stat{background:#e3f2fd;padding:.5rem 1rem;border-radius:9999px;font-size:.85rem}.stat b{color:#1976d2}.controls{background:#fff;padding:1rem;border-radius:.5rem;margin-bottom:1rem;box-shadow:0 1px 3px rgba(0,0,0,.1);display:flex;flex-wrap:wrap;gap:.5rem;align-items:flex-start}.controls>:not(input){flex-shrink:0}input[type=text]{flex:1;min-width:0;padding:.5rem;border:1px solid #ddd;border-radius:.25rem;font:inherit;height:2.375rem;line-height:1rem}button,select{padding:.5rem 1rem;border:none;background:#666;color:#fff;border-radius:.25rem;cursor:pointer;font:inherit;white-space:nowrap;height:2.375rem;line-height:1rem;display:flex;align-items:center;justify-content:center}button:hover{background:#555}.buttons{display:flex;gap:.5rem;flex-wrap:wrap}@media(max-width:767px){input[type=text]{width:100%;flex-basis:100%}#filter-btn{flex-shrink:0}.buttons{display:flex;flex-wrap:nowrap;gap:.5rem}.controls{justify-content:center}}.btn-primary{background:#1976d2}.btn-primary:hover{background:#1565c0}.btn-danger{background:#d32f2f}.btn-danger:hover{background:#c62828}label.check{display:flex;align-items:center;gap:.5rem;padding:.5rem;cursor:pointer;border-radius:.25rem}label.check:hover{background:#f5f5f5}.group{background:#fff;padding:1rem;border-radius:.5rem;margin-bottom:1rem;box-shadow:0 1px 3px rgba(0,0,0,.1)}.group h2{font-size:1.2rem;margin-bottom:.75rem}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:.5rem}@media(min-width:640px){.grid{grid-template-columns:repeat(3,1fr)}}@media(min-width:768px){.grid{grid-template-columns:repeat(6,1fr)}}@media(min-width:1024px){.grid{grid-template-columns:repeat(9,1fr)}}.paint{border:1px solid #e5e7eb;border-radius:.25rem;padding:.5rem;background:#fff}.color{aspect-ratio:2.975/1;border:1px solid #d1d5db;border-radius:.25rem;margin-bottom:.25rem;cursor:pointer}.id{font-weight:600;font-size:.75rem;margin-bottom:.1rem}.name{font-size:.75rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:.1rem}.citadel{font-size:.7rem;color:#666;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.checks{display:flex;gap:.5rem;margin-top:.25rem}.checks label{display:flex;align-items:center;gap:.2rem;font-size:.7rem;cursor:pointer}input[type=checkbox]{cursor:pointer}.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);align-items:center;justify-content:center;padding:1rem;z-index:1000}.modal.show{display:flex}.modal-content{background:#fff;border-radius:.5rem;padding:1.5rem;max-width:500px;width:100%}.modal h3{margin-bottom:1rem;font-size:1.2rem}.modal p{margin-bottom:1rem;color:#666;font-size:.9rem}.modal input{width:100%;padding:.5rem;border:1px solid #ddd;border-radius:.25rem;font:inherit;margin-bottom:1rem}.modal-actions{display:flex;gap:.5rem;justify-content:flex-end}.status{background:#e3f2fd;border:1px solid #90caf9;padding:.75rem;border-radius:.25rem;margin-bottom:1rem;font-size:.9rem}.triad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:.5rem}.triad{background:#fff;border:1px solid #ddd;border-radius:.25rem;padding:.5rem}.triad.complete{background:#c8e6c9}.triad.partial{background:#fff9c4}.triad-paints{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
 </style>
 </head>
 <body>
@@ -104,29 +42,7 @@ input[type=checkbox]{cursor:pointer}
 </div>
 </div>
 <script>
-const T=["Regular","Metallic","Ink","Wash","Fluo","Special FX","Auxiliary","Xpress","Xpress Intense"],TN={"Regular":"Game Color","Metallic":"Game Color Metallic","Ink":"Game Color Ink","Wash":"Game Color Wash","Fluo":"Game Color Fluo","Special FX":"Game Color Special FX","Auxiliary":"Auxiliary Products","Xpress":"Xpress Color","Xpress Intense":"Xpress Color Intense"},C="checked",D="disabled",N="N/A",B="block",X="none",K="vallejo-paint-data";
-let P=window.paintData.map(e=>({...e,o:false,b:false})),s='',f=[0,0,0,0],m,mi,mc,mf,fe,te,se,ow,wi;
-function $(i){return document.getElementById(i)}
-function ep(p){const a=new Uint8Array(Math.ceil(p.length/4));p.forEach((e,i)=>{const x=i>>2,o=(i&3)*2,s=e.o?2:e.b?1:0;a[x]|=s<<o});return btoa(String.fromCharCode(...a))}
-function dp(s,p){try{const b=atob(s),a=new Uint8Array(b.length);for(let i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return p.map((e,i)=>{const x=i>>2,o=(i&3)*2,v=(a[x]>>o)&3;return{...e,o:v===2,b:v===1}})}catch{return p}}
-function sv(l){try{if(l){const d=JSON.parse(localStorage.getItem(K)||'{}'),o=new Set(d.owned||[]),t=new Set(d.toBuy||[]);P.forEach(e=>{e.o=o.has(e.i);e.b=t.has(e.i)})}else localStorage.setItem(K,JSON.stringify({owned:P.filter(e=>e.o).map(e=>e.i),toBuy:P.filter(e=>e.b).map(e=>e.i)}))}catch{}}
-function st(msg,time=3e3){se.textContent=msg;se.style.display=B;setTimeout(()=>se.style.display=X,time)}
-function sm(title,text,confirmText,onConfirm,showInput){m.classList.add('show');$('modal-title').textContent=title;$('modal-text').textContent=text;mc.textContent=confirmText;mi.style.display=showInput?B:X;mi.value='';mf=()=>{m.classList.remove('show');onConfirm(mi.value)}}
-function pc(pa){return`<div class="paint"><div class="color"style="background:${pa.c}"title="${pa.n}"></div><div class="id">${pa.i}</div><div class="name"title="${pa.n}">${pa.n}</div><div class="citadel"title="${pa.x||N}">${pa.x||N}</div><div class="checks"><label><input type="checkbox"data-i="${pa.i}"data-t="o"${pa.o?C:''}> Own</label><label><input type="checkbox"data-i="${pa.i}"data-t="b"${pa.b?C:''}${pa.o?D:''}> Buy</label></div></div>`}
-function r(){let ps=P.filter(p=>!(s&&!p.n.toLowerCase().includes(s)&&!p.i.toLowerCase().includes(s))&&!(f[0]&&!p.o)&&!(f[1]&&p.o)&&!(f[2]&&!p.b));const g={};ps.forEach(p=>{const k=T[p.t];(g[k]||(g[k]=[])).push(p)});let h='';T.forEach(ty=>{if(!g[ty])return;h+=`<div class="group"><h2>${TN[ty]||ty}</h2><div class="grid">`;g[ty].forEach(pa=>h+=pc(pa));h+='</div></div>'});$('app').innerHTML=h;if(!f[3]){te.style.display=X;ow.textContent=P.filter(p=>p.o).length;wi.textContent=P.filter(p=>p.b).length;return}te.style.display=B;h='<div class="group"><h2>BSL Triads</h2><div class="triad-grid">';window.triads.forEach(tr=>{const paints=tr.map(id=>P.find(p=>p.i===id)),o=paints.filter(p=>p&&p.o).length,cls=o===3?'complete':o>=1?'partial':'';h+=`<div class="triad ${cls}"><div class="triad-paints">`;paints.forEach(pa=>h+=pa?pc(pa):`<div class="paint"><span style="color:#999;font-size:.7rem">Missing</span></div>`);h+='</div></div>'});te.innerHTML=h+'</div></div>';ow.textContent=P.filter(p=>p.o).length;wi.textContent=P.filter(p=>p.b).length}
-$('search').oninput=e=>{s=e.target.value.toLowerCase();r()};
-$('filter-btn').onclick=()=>fe.style.display=fe.style.display===X?B:X;
-['owned','missing'].forEach((n,i)=>$('f-'+n).onchange=e=>{f[i]=e.target.checked;f[i]&&(f[i?0:1]=0);r()});
-$('f-wish').onchange=e=>{f[2]=e.target.checked;r()};
-$('f-triads').onchange=e=>{f[3]=e.target.checked;r()};
-$('share-btn').onclick=async()=>{try{const enc=ep(P),url=`${location.origin}${location.pathname}#${enc}`;await navigator.clipboard.writeText(url);st(`✓ Link copied!`,5e3)}catch(e){st(`✗ Error: ${e.message}`,5e3)}};
-$('load-btn').onclick=()=>sm('Load from Code','Paste the code from your shared URL:','Load',code=>{if(!code.trim())return st('✗ Please enter a code');try{P=dp(code.trim(),P);sv();r();st('✓ Loaded successfully!')}catch(e){st(`✗ Error: ${e.message}`,5e3)}},true);
-$('reset-btn').onclick=()=>sm('⚠️ Reset All Data?','This will clear all your data. Share a link first if you want to keep it.','Reset Everything',()=>{P.forEach(p=>{p.o=false;p.b=false});sv();r();st('✓ Reset complete')});
-document.body.onclick=e=>{if(e.target.type==='checkbox'&&e.target.dataset.i){const i=e.target.dataset.i,t=e.target.dataset.t,p=P.find(x=>x.i===i);if(p){t==='o'?(p.o=e.target.checked,p.o&&(p.b=false)):p.b=e.target.checked;sv();r()}}};
-window.addEventListener('keydown',e=>{if(e.key==='Escape'){m.classList.remove('show');fe.style.display=X}});
-m=$('modal');mi=$('modal-input');mc=$('modal-confirm');mc.onclick=()=>mf();$('modal-cancel').onclick=()=>m.classList.remove('show');fe=$('filters');te=$('triads');se=$('status');ow=$('owned');wi=$('wish');
-if(location.hash){const code=location.hash.slice(1);sm('⚠️ Overwrite Collection?','Loading will replace your current data. Share a link first if you want to keep it.','Replace My Data',()=>{try{P=dp(code,P);sv();r();history.replaceState(null,'',location.pathname);st('✓ Loaded successfully!')}catch(e){st(`✗ Error: ${e.message}`,5e3)}})}
-sv(1);r();
+const T=["Regular","Metallic","Ink","Wash","Fluo","Special FX","Auxiliary","Xpress","Xpress Intense"],TN={"Regular":"Game Color","Metallic":"Game Color Metallic","Ink":"Game Color Ink","Wash":"Game Color Wash","Fluo":"Game Color Fluo","Special FX":"Game Color Special FX","Auxiliary":"Auxiliary Products","Xpress":"Xpress Color","Xpress Intense":"Xpress Color Intense"},K="vallejo-paint-data";let P=window.paintData.map(e=>({...e,o:!1,b:!1})),s="",f=[0,0,0,0],m,mi,mc,mf,fe,te,se,ow,wi;const $=i=>document.getElementById(i),ep=p=>{const a=new Uint8Array(Math.ceil(p.length/4));return p.forEach((e,i)=>{const x=i>>2,o=(i&3)*2,v=e.o?2:e.b?1:0;a[x]|=v<<o}),btoa(String.fromCharCode(...a))},dp=(s,p)=>{try{const b=atob(s),a=new Uint8Array(b.length);for(let i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return p.map((e,i)=>{const x=i>>2,o=(i&3)*2,v=(a[x]>>o)&3;return{...e,o:v===2,b:v===1}})}catch{return p}},sv=l=>{try{if(l){const d=JSON.parse(localStorage.getItem(K)||"{}"),o=new Set(d.owned||[]),t=new Set(d.toBuy||[]);P.forEach(e=>{e.o=o.has(e.i);e.b=t.has(e.i)})}else localStorage.setItem(K,JSON.stringify({owned:P.filter(e=>e.o).map(e=>e.i),toBuy:P.filter(e=>e.b).map(e=>e.i)}))}catch{}},st=(m,t=3e3)=>{se.textContent=m;se.style.display="block";setTimeout(()=>se.style.display="none",t)},sm=(t,x,c,o,i)=>{m.classList.add("show");$("modal-title").textContent=t;$("modal-text").textContent=x;mc.textContent=c;mi.style.display=i?"block":"none";mi.value="";mf=()=>{m.classList.remove("show");o(mi.value)}},pc=p=>`<div class="paint"><div class="color" style="background:${p.c}" title="${p.n}"></div><div class="id">${p.i}</div><div class="name" title="${p.n}">${p.n}</div><div class="citadel" title="${p.x||"N/A"}">${p.x||"N/A"}</div><div class="checks"><label><input type="checkbox" data-i="${p.i}" data-t="o"${p.o?" checked":""}>Own</label><label><input type="checkbox" data-i="${p.i}" data-t="b"${p.b?" checked":""}${p.o?" disabled":""}>Buy</label></div></div>`,r=()=>{let ps=P.filter(p=>!(s&&!p.n.toLowerCase().includes(s)&&!p.i.toLowerCase().includes(s))&&!(f[0]&&!p.o)&&!(f[1]&&p.o)&&!(f[2]&&!p.b));const g={};ps.forEach(p=>{const k=T[p.t];(g[k]||(g[k]=[])).push(p)});let h="";T.forEach(ty=>{if(!g[ty])return;h+=`<div class="group"><h2>${TN[ty]||ty}</h2><div class="grid">`;g[ty].forEach(pa=>h+=pc(pa));h+="</div></div>"});$("app").innerHTML=h;if(!f[3]){te.style.display="none";ow.textContent=P.filter(p=>p.o).length;wi.textContent=P.filter(p=>p.b).length;return}te.style.display="block";h='<div class="group"><h2>BSL Triads</h2><div class="triad-grid">';window.triads.forEach(tr=>{const paints=tr.map(id=>P.find(p=>p.i===id)),o=paints.filter(p=>p&&p.o).length,cls=3===o?"complete":o>=1?"partial":"";h+=`<div class="triad ${cls}"><div class="triad-paints">`;paints.forEach(pa=>h+=pa?pc(pa):'<div class="paint"><span style="color:#999;font-size:.7rem">Missing</span></div>');h+="</div></div>"});te.innerHTML=h+"</div></div>";ow.textContent=P.filter(p=>p.o).length;wi.textContent=P.filter(p=>p.b).length};$("search").oninput=e=>{s=e.target.value.toLowerCase();r()};$("filter-btn").onclick=()=>fe.style.display="none"===fe.style.display?"block":"none";["owned","missing"].forEach((n,i)=>$("f-"+n).onchange=e=>{f[i]=e.target.checked;f[i]&&(f[i?0:1]=0);r()});$("f-wish").onchange=e=>{f[2]=e.target.checked;r()};$("f-triads").onchange=e=>{f[3]=e.target.checked;r()};$("share-btn").onclick=async()=>{try{const enc=ep(P),url=`${location.origin}${location.pathname}#${enc}`;await navigator.clipboard.writeText(url);st("✓ Link copied!",5e3)}catch(e){st(`✗ Error: ${e.message}`,5e3)}};$("load-btn").onclick=()=>sm("Load from Code","Paste the code from your shared URL:","Load",code=>{if(!code.trim())return st("✗ Please enter a code");try{P=dp(code.trim(),P);sv();r();st("✓ Loaded successfully!")}catch(e){st(`✗ Error: ${e.message}`,5e3)}},!0);$("reset-btn").onclick=()=>sm("⚠️ Reset All Data?","This will clear all your data. Share a link first if you want to keep it.","Reset Everything",()=>{P.forEach(p=>{p.o=!1;p.b=!1});sv();r();st("✓ Reset complete")});document.body.onclick=e=>{if("checkbox"===e.target.type&&e.target.dataset.i){const i=e.target.dataset.i,t=e.target.dataset.t,p=P.find(x=>x.i===i);if(p){if("o"===t)p.o=e.target.checked,p.o&&(p.b=!1);else p.b=e.target.checked;sv();r()}}};window.addEventListener("keydown",e=>{"Escape"===e.key&&(m.classList.remove("show"),fe.style.display="none")});m=$("modal");mi=$("modal-input");mc=$("modal-confirm");mc.onclick=()=>mf();$("modal-cancel").onclick=()=>m.classList.remove("show");fe=$("filters");te=$("triads");se=$("status");ow=$("owned");wi=$("wish");if(location.hash){const code=location.hash.slice(1);sm("⚠️ Overwrite Collection?","Loading will replace your current data. Share a link first if you want to keep it.","Replace My Data",()=>{try{P=dp(code,P);sv();r();history.replaceState(null,"",location.pathname);st("✓ Loaded successfully!")}catch(e){st(`✗ Error: ${e.message}`,5e3)}})}sv(1);r();
 </script>
 </body>
 </html>
