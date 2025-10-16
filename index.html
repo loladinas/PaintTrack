@@ -102,7 +102,7 @@ $('filter-btn').onclick=()=>fe.style.display=fe.style.display===X?B:X;
 ['owned','missing'].forEach((n,i)=>$('f-'+n).onchange=e=>{f[i]=e.target.checked;f[i]&&(f[i?0:1]=0);r()});
 $('f-wish').onchange=e=>{f[2]=e.target.checked;r()};
 $('f-triads').onchange=e=>{f[3]=e.target.checked;r()};
-$('share-btn').onclick=async()=>{try{const enc=ep(P),url=`${location.origin}${location.pathname}#${enc}`;await navigator.clipboard.writeText(url);st(`✓ Link copied!)`,5e3)}catch(e){st(`✗ Error: ${e.message}`,5e3)}};
+$('share-btn').onclick=async()=>{try{const enc=ep(P),url=`${location.origin}${location.pathname}#${enc}`;await navigator.clipboard.writeText(url);st(`✓ Link copied!`,5e3)}catch(e){st(`✗ Error: ${e.message}`,5e3)}};
 $('load-btn').onclick=()=>sm('Load from Code','Paste the code from your shared URL:','Load',code=>{if(!code.trim())return st('✗ Please enter a code');try{P=dp(code.trim(),P);sv();r();st('✓ Loaded successfully!')}catch(e){st(`✗ Error: ${e.message}`,5e3)}},true);
 $('reset-btn').onclick=()=>sm('⚠️ Reset All Data?','This will clear all your data. Share a link first if you want to keep it.','Reset Everything',()=>{P.forEach(p=>{p.o=false;p.b=false});sv();r();st('✓ Reset complete')});
 document.body.onclick=e=>{if(e.target.type==='checkbox'&&e.target.dataset.i){const i=e.target.dataset.i,t=e.target.dataset.t,p=P.find(x=>x.i===i);if(p){t==='o'?(p.o=e.target.checked,p.o&&(p.b=false)):p.b=e.target.checked;sv();r()}}};
