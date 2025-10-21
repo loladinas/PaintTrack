@@ -4,33 +4,23 @@
 <link rel="icon" href="data:,">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Shadowdark Game Time</title>
+<title>Shadowdark Timer</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);padding:1rem}body::before{content:'';position:fixed;inset:0;opacity:.1;background-image:radial-gradient(circle at 20% 50%, #ff6b35 0%, transparent 50%), radial-gradient(circle at 80% 80%, #004e89 0%, transparent 50%);pointer-events:none}.container{background:#fff;border-radius:1rem;padding:2rem;box-shadow:0 20px 60px rgba(0,0,0,.3);max-width:500px;width:100%;text-align:center}.header{margin-bottom:2rem}.title{font-size:1.5rem;color:#1a1a2e;margin-bottom:.5rem;font-weight:700}.subtitle{font-size:.85rem;color:#666}.canvas-wrapper{margin-bottom:2rem}.clock-canvas{display:block;margin:0 auto;background:#f9f9f9;border:2px solid #ddd;border-radius:50%;cursor:grab;max-width:100%;height:auto}.clock-canvas:active{cursor:grabbing}.digital{background:#1a1a2e;color:#ff6b35;padding:1.5rem;border-radius:.5rem;font-family:'Courier New',monospace;margin-bottom:1.5rem}.time-display{font-size:3rem;font-weight:700;letter-spacing:.1em;line-height:1}.elapsed-display{font-size:.9rem;color:#999;margin-top:.5rem}.controls{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}button{padding:.75rem 1.5rem;border:none;border-radius:.25rem;font-weight:600;cursor:pointer;transition:all .2s;font-size:.9rem}button:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.15)}.btn-primary{background:#ff6b35;color:#fff}.btn-primary:hover{background:#e55a24}.btn-secondary{background:#ddd;color:#333}.btn-secondary:hover{background:#ccc}.info{font-size:.8rem;color:#999;margin-top:1rem}.quick-buttons{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-top:1rem}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);padding:1rem}.container{background:#fff;border-radius:1rem;padding:2rem;box-shadow:0 20px 60px rgba(0,0,0,.3);max-width:450px;width:100%;text-align:center}.canvas-wrapper{margin-bottom:1.5rem}.clock-canvas{display:block;margin:0 auto;background:#f9f9f9;border:2px solid #ddd;border-radius:50%;cursor:grab;width:280px;height:280px}.clock-canvas:active{cursor:grabbing}.digital{background:#1a1a2e;color:#ff6b35;padding:1.5rem;border-radius:.5rem;font-family:'Courier New',monospace;margin-bottom:1.5rem;font-size:2.5rem;font-weight:700;letter-spacing:.1em}.controls{display:flex;gap:.5rem;justify-content:center}button{flex:1;padding:.75rem 1rem;border:none;border-radius:.25rem;font-weight:600;cursor:pointer;transition:all .2s;font-size:.9rem}button:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.15)}.btn-primary{background:#ff6b35;color:#fff}.btn-primary:hover{background:#e55a24}.btn-secondary{background:#ddd;color:#333}.btn-secondary:hover{background:#ccc}
 </style>
 </head>
 <body>
 <div class="container">
-<div class="header">
-<div class="title">⏰ Shadowdark Time</div>
-<div class="subtitle">Track game time with an interactive clock</div>
-</div>
 <div class="canvas-wrapper">
-<canvas id="clock" width="300" height="300"></canvas>
+<canvas id="clock" width="280" height="280"></canvas>
 </div>
-<div class="digital">
-<div class="time-display" id="digital">00:00:00</div>
-<div class="elapsed-display">Elapsed: <span id="elapsed">0m 0s</span></div>
-</div>
+<div class="digital" id="digital">00:00:00</div>
 <div class="controls">
 <button class="btn-primary" id="pause-btn">Pause</button>
-<button class="btn-secondary" id="reset-btn">Reset</button>
-</div>
-<div class="info">Drag clock hands to adjust • Quick add buttons below</div>
-<div class="quick-buttons">
 <button class="btn-secondary" id="add-5">+5m</button>
 <button class="btn-secondary" id="add-15">+15m</button>
 <button class="btn-secondary" id="add-60">+1h</button>
+<button class="btn-secondary" id="reset-btn">Reset</button>
 </div>
 </div>
 
@@ -38,9 +28,7 @@
 const canvas = document.getElementById('clock');
 const ctx = canvas.getContext('2d');
 const digitalDisplay = document.getElementById('digital');
-const elapsedDisplay = document.getElementById('elapsed');
 const pauseBtn = document.getElementById('pause-btn');
-const resetBtn = document.getElementById('reset-btn');
 
 let gameSeconds = 0;
 let isRunning = true;
@@ -54,7 +42,6 @@ const centerY = radius;
 const drawClock = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
-  // Circle
   ctx.fillStyle = '#f9f9f9';
   ctx.beginPath();
   ctx.arc(centerX, centerY, radius - 5, 0, Math.PI * 2);
@@ -63,7 +50,6 @@ const drawClock = () => {
   ctx.lineWidth = 2;
   ctx.stroke();
   
-  // Hour marks
   ctx.strokeStyle = '#666';
   for (let i = 0; i < 12; i++) {
     const angle = (i * 30 - 90) * Math.PI / 180;
@@ -78,19 +64,16 @@ const drawClock = () => {
     ctx.stroke();
   }
   
-  // Center dot
   ctx.fillStyle = '#333';
   ctx.beginPath();
   ctx.arc(centerX, centerY, 6, 0, Math.PI * 2);
   ctx.fill();
   
-  // Calculate hand positions
   const totalMins = Math.floor(gameSeconds / 60);
   const hours = Math.floor(totalMins / 60) % 12;
   const mins = totalMins % 60;
   const secs = gameSeconds % 60;
   
-  // Hour hand
   const hourAngle = (hours * 30 + mins * 0.5 - 90) * Math.PI / 180;
   ctx.strokeStyle = '#333';
   ctx.lineWidth = 6;
@@ -100,7 +83,6 @@ const drawClock = () => {
   ctx.lineTo(centerX + Math.cos(hourAngle) * (radius - 80), centerY + Math.sin(hourAngle) * (radius - 80));
   ctx.stroke();
   
-  // Minute hand
   const minAngle = (mins * 6 - 90) * Math.PI / 180;
   ctx.lineWidth = 4;
   ctx.strokeStyle = '#ff6b35';
@@ -109,7 +91,6 @@ const drawClock = () => {
   ctx.lineTo(centerX + Math.cos(minAngle) * (radius - 50), centerY + Math.sin(minAngle) * (radius - 50));
   ctx.stroke();
   
-  // Second hand
   const secAngle = (secs * 6 - 90) * Math.PI / 180;
   ctx.lineWidth = 2;
   ctx.strokeStyle = '#999';
@@ -125,12 +106,6 @@ const updateDigital = () => {
   const mins = totalMins % 60;
   const secs = gameSeconds % 60;
   digitalDisplay.textContent = `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-  
-  if (hours > 0) {
-    elapsedDisplay.textContent = `${hours}h ${mins}m ${secs}s`;
-  } else {
-    elapsedDisplay.textContent = `${mins}m ${secs}s`;
-  }
 };
 
 const getAngleFromPoint = (x, y) => {
@@ -222,7 +197,7 @@ pauseBtn.addEventListener('click', () => {
   pauseBtn.textContent = isRunning ? 'Pause' : 'Resume';
 });
 
-resetBtn.addEventListener('click', () => {
+document.getElementById('reset-btn').addEventListener('click', () => {
   gameSeconds = 0;
   updateDigital();
   drawClock();
@@ -256,7 +231,6 @@ const tick = () => {
 
 setInterval(tick, 1000);
 
-// Initial draw
 updateDigital();
 drawClock();
 </script>
