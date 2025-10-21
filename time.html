@@ -34,6 +34,7 @@ let gameSeconds = 0;
 let isRunning = true;
 let isDragging = false;
 let draggedHand = null;
+let lastTimestamp = Date.now();
 
 const radius = canvas.width / 2;
 const centerX = radius;
@@ -183,6 +184,7 @@ document.addEventListener('mousemove', (e) => {
     gameSeconds = (hours * 60 + mins) * 60 + (gameSeconds % 60);
   }
   
+  lastTimestamp = Date.now();
   updateDigital();
   drawClock();
 });
@@ -195,41 +197,51 @@ document.addEventListener('mouseup', () => {
 pauseBtn.addEventListener('click', () => {
   isRunning = !isRunning;
   pauseBtn.textContent = isRunning ? 'Pause' : 'Resume';
+  lastTimestamp = Date.now();
 });
 
 document.getElementById('reset-btn').addEventListener('click', () => {
   gameSeconds = 0;
+  lastTimestamp = Date.now();
   updateDigital();
   drawClock();
 });
 
 document.getElementById('add-5').addEventListener('click', () => {
   gameSeconds += 300;
+  lastTimestamp = Date.now();
   updateDigital();
   drawClock();
 });
 
 document.getElementById('add-15').addEventListener('click', () => {
   gameSeconds += 900;
+  lastTimestamp = Date.now();
   updateDigital();
   drawClock();
 });
 
 document.getElementById('add-60').addEventListener('click', () => {
   gameSeconds += 3600;
+  lastTimestamp = Date.now();
   updateDigital();
   drawClock();
 });
 
 const tick = () => {
+  const now = Date.now();
+  const deltaMs = now - lastTimestamp;
+  
   if (isRunning) {
-    gameSeconds++;
+    gameSeconds += Math.floor(deltaMs / 1000);
   }
+  
+  lastTimestamp = now;
   updateDigital();
   drawClock();
 };
 
-setInterval(tick, 1000);
+setInterval(tick, 100);
 
 updateDigital();
 drawClock();
